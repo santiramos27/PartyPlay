@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		8E7785AA269FE76A006D786A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785A9269FE76A006D786A /* AppDelegate.m */; };
 		8E7785AD269FE76A006D786A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785AC269FE76A006D786A /* SceneDelegate.m */; };
-		8E7785B0269FE76A006D786A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785AF269FE76A006D786A /* ViewController.m */; };
 		8E7785B3269FE76A006D786A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7785B1269FE76A006D786A /* Main.storyboard */; };
 		8E7785B5269FE76C006D786A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7785B4269FE76C006D786A /* Assets.xcassets */; };
 		8E7785B8269FE76C006D786A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7785B6269FE76C006D786A /* LaunchScreen.storyboard */; };
 		8E7785BB269FE76C006D786A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785BA269FE76C006D786A /* main.m */; };
 		8E7785C5269FE76C006D786A /* PartyPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785C4269FE76C006D786A /* PartyPlayTests.m */; };
 		8E7785D0269FE76C006D786A /* PartyPlayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785CF269FE76C006D786A /* PartyPlayUITests.m */; };
+		8E7785E0269FE7A7006D786A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785DF269FE7A7006D786A /* LoginViewController.m */; };
+		8E7785F1269FF102006D786A /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7785F0269FF102006D786A /* SpotifyiOS.framework */; };
+		8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1E526A1465300902FD1 /* APIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +43,6 @@
 		8E7785A9269FE76A006D786A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8E7785AB269FE76A006D786A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		8E7785AC269FE76A006D786A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		8E7785AE269FE76A006D786A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8E7785AF269FE76A006D786A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8E7785B2269FE76A006D786A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E7785B4269FE76C006D786A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E7785B7269FE76C006D786A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +54,11 @@
 		8E7785CB269FE76C006D786A /* PartyPlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyPlayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7785CF269FE76C006D786A /* PartyPlayUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartyPlayUITests.m; sourceTree = "<group>"; };
 		8E7785D1269FE76C006D786A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E7785DE269FE7A7006D786A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		8E7785DF269FE7A7006D786A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		8E7785F0269FF102006D786A /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "PartyPlay/ios-sdk-master/SpotifyiOS.framework"; sourceTree = "<group>"; };
+		8EC7A1E426A1465300902FD1 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		8EC7A1E526A1465300902FD1 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7785F1269FF102006D786A /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +94,7 @@
 				8E7785C3269FE76C006D786A /* PartyPlayTests */,
 				8E7785CE269FE76C006D786A /* PartyPlayUITests */,
 				8E7785A6269FE76A006D786A /* Products */,
+				8E7785E1269FE952006D786A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,12 +111,12 @@
 		8E7785A7269FE76A006D786A /* PartyPlay */ = {
 			isa = PBXGroup;
 			children = (
+				8EC7A1E326A1461D00902FD1 /* API */,
+				8E7785DD269FE798006D786A /* View Controllers */,
 				8E7785A8269FE76A006D786A /* AppDelegate.h */,
 				8E7785A9269FE76A006D786A /* AppDelegate.m */,
 				8E7785AB269FE76A006D786A /* SceneDelegate.h */,
 				8E7785AC269FE76A006D786A /* SceneDelegate.m */,
-				8E7785AE269FE76A006D786A /* ViewController.h */,
-				8E7785AF269FE76A006D786A /* ViewController.m */,
 				8E7785B1269FE76A006D786A /* Main.storyboard */,
 				8E7785B4269FE76C006D786A /* Assets.xcassets */,
 				8E7785B6269FE76C006D786A /* LaunchScreen.storyboard */,
@@ -135,6 +142,32 @@
 				8E7785D1269FE76C006D786A /* Info.plist */,
 			);
 			path = PartyPlayUITests;
+			sourceTree = "<group>";
+		};
+		8E7785DD269FE798006D786A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E7785DE269FE7A7006D786A /* LoginViewController.h */,
+				8E7785DF269FE7A7006D786A /* LoginViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8E7785E1269FE952006D786A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E7785F0269FF102006D786A /* SpotifyiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8EC7A1E326A1461D00902FD1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8EC7A1E426A1465300902FD1 /* APIManager.h */,
+				8EC7A1E526A1465300902FD1 /* APIManager.m */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,10 +299,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E7785B0269FE76A006D786A /* ViewController.m in Sources */,
+				8E7785E0269FE7A7006D786A /* LoginViewController.m in Sources */,
 				8E7785AA269FE76A006D786A /* AppDelegate.m in Sources */,
 				8E7785BB269FE76C006D786A /* main.m in Sources */,
 				8E7785AD269FE76A006D786A /* SceneDelegate.m in Sources */,
+				8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,14 +477,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLBGBCQZMP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PartyPlay/ios-sdk-master",
+				);
 				INFOPLIST_FILE = PartyPlay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elsantinoramos.PartyPlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Debug;
 		};
@@ -461,14 +501,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KLBGBCQZMP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PartyPlay/ios-sdk-master",
+				);
 				INFOPLIST_FILE = PartyPlay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elsantinoramos.PartyPlay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = NO;
 			};
 			name = Release;
 		};
