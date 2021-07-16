@@ -11,7 +11,11 @@ PartyPlay
 
 ## Overview
 ### Description
+<<<<<<< HEAD
 DJAux provides an organized and streamlined interface through which a user can start a music session on a host device and then have other users join the session where they can share a music queue. Both the host and the invited users can suggest songs to add to the queue, with the possibility of users voting on suggestions in order to assign them higher priority. Currently playing songs can also be assigned a "skip" vote if some feel that the next song should be played already. The host has the highest priority vote, but users can "veto" a host choice with enough numbers. The current host can also "hand off" the session to another user if he/she has to leave, so the music session remains uninterrupted.
+=======
+PartyPlay provides an organized and streamlined interface through which a user can start a music session on a host device and then have other users join the session where they can share a music queue. Both the host and the invited users can suggest songs to add to the queue, with the possibility of users voting on suggestions in order to assign them higher priority. Currently playing songs can also be assigned a "skip" vote if some feel that the next song should be played already. The host has the highest priority vote, but users can "veto" a host choice with enough numbers. The current host can also "hand off" the session to another user if he/she has to leave, so the music session remains uninterrupted.
+>>>>>>> 4b17e49dfc46761b842e66cf85933cb976f7e680
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
