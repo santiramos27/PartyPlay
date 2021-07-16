@@ -34,8 +34,11 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     self.configuration  = [[SPTConfiguration alloc] initWithClientID:SpotifyClientID redirectURL:[NSURL URLWithString:SpotifyRedirectURLString]];
     self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    NSURL *tokenSwapURL = [NSURL URLWithString:@"http://10.0.0.61:1234/swap"];
-    NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://10.0.0.61:1234/refresh"];
+    //NSURL *tokenSwapURL = [NSURL URLWithString:@"http://10.0.0.61:1234/swap"];
+    //NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://10.0.0.61:1234/refresh"];
+    
+    NSURL *tokenSwapURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/token"];
+    NSURL *tokenRefreshURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/refresh_token"];
     
     self.configuration.playURI = @"";
     self.configuration.tokenSwapURL = tokenSwapURL;

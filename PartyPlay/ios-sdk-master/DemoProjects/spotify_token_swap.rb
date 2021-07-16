@@ -42,7 +42,7 @@ print "\e[31m------------------------------------------------------\e[0m\n"
 print "\7\7"
 sleep(2)
 CLIENT_ID = "a37725494d5446f389585c9ac6f9f848"
-CLIENT_SECRET = "167abca0648f470a865c696c047fd786"
+CLIENT_SECRET = ""
 ENCRYPTION_SECRET = ""
 CLIENT_CALLBACK_URL = "spotify-ios-quick-start://spotify-login-callback"
 AUTH_HEADER = "Basic " + Base64.strict_encode64(CLIENT_ID + ":" + CLIENT_SECRET)
