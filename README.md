@@ -126,6 +126,14 @@ Model:Track
 | numUpvotes   | Number | number of users who upvoted song in queue                                  |
 | numDownvotes | Number | number of users who downvoted song in queue                                |
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+* Registration screen:
+  * POST - create new account on Parse backend
+  * GET - retrieve user profile given valid login info
+ 
+* Shared Queue Screen:
+  * GET - refresh/query current state of queue 
+  * POST - add song to queue
+  * POST - create an upvote to a track suggestion
+  * POST - create a downvote to a track suggestion
+* Search Screen:
+  * GET - query spotify database for song matching search terms
