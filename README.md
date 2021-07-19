@@ -115,9 +115,16 @@ https://github.com/santiramos27/PartyPlay/blob/main/Wireframes.pdf
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+Model:Track
+| Property     | Type   | Description                                                                |
+|--------------|--------|----------------------------------------------------------------------------|
+| songID       | String | Unique Spotify identifier hash for track information within their database |
+| songName     | String | name of track title                                                        |
+| artistName   | String | name of track artist/artists                                               |
+| numUpvotes   | Number | number of users who upvoted song in queue                                  |
+| numDownvotes | Number | number of users who downvoted song in queue                                |
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
