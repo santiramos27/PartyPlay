@@ -108,10 +108,9 @@ PartyPlay provides an organized and streamlined interface through which a user c
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/santiramos27/PartyPlay/blob/main/Wireframes.pdf" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
-https://github.com/santiramos27/PartyPlay/blob/main/Wireframes.pdf
 
 ### [BONUS] Interactive Prototype
 
