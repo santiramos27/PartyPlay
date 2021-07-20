@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)logIn;
+- (void)spotifyAuth;
 
 
 @end

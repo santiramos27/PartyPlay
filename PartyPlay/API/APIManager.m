@@ -34,9 +34,6 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     self.configuration  = [[SPTConfiguration alloc] initWithClientID:SpotifyClientID redirectURL:[NSURL URLWithString:SpotifyRedirectURLString]];
     self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    //NSURL *tokenSwapURL = [NSURL URLWithString:@"http://10.0.0.61:1234/swap"];
-    //NSURL *tokenRefreshURL = [NSURL URLWithString:@"http://10.0.0.61:1234/refresh"];
-    
     NSURL *tokenSwapURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/token"];
     NSURL *tokenRefreshURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/refresh_token"];
     
@@ -50,14 +47,13 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     return self;
 }
 
-- (void)logIn{
+- (void)spotifyAuth{
     SPTScope requestedScope = SPTAppRemoteControlScope;
     [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
 }
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session
 {
-    NSLog(@"we made it");
     self.appRemote.connectionParameters.accessToken = session.accessToken;
     [self.appRemote connect];
     NSLog(@"success: %@", session);
@@ -82,7 +78,6 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 - (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote
 {
   // Connection was successful, you can begin issuing commands
-    NSLog(@"success!");
   self.appRemote.playerAPI.delegate = self;
   [self.appRemote.playerAPI subscribeToPlayerState:^(id _Nullable result, NSError * _Nullable error) {
     if (error) {

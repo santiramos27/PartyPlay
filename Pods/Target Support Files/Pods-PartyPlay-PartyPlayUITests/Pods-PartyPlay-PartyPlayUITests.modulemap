@@ -1,0 +1,6 @@
+framework module Pods_PartyPlay_PartyPlayUITests {
+  umbrella header "Pods-PartyPlay-PartyPlayUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
