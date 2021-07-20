@@ -107,18 +107,33 @@ PartyPlay provides an organized and streamlined interface through which a user c
 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/santiramos27/PartyPlay/blob/main/Wireframes.pdf" width=600>
+https://github.com/santiramos27/PartyPlay/blob/main/Wireframes.pdf
 
 ### [BONUS] Digital Wireframes & Mockups
 
 ### [BONUS] Interactive Prototype
 
 ## Schema 
-[This section will be completed in Unit 9]
+
 ### Models
-[Add table of models]
+Model:Track
+| Property     | Type   | Description                                                                |
+|--------------|--------|----------------------------------------------------------------------------|
+| songID       | String | Unique Spotify identifier hash for track information within their database |
+| songName     | String | name of track title                                                        |
+| artistName   | String | name of track artist/artists                                               |
+| numUpvotes   | Number | number of users who upvoted song in queue                                  |
+| numDownvotes | Number | number of users who downvoted song in queue                                |
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+* Registration screen:
+  * POST - create new account on Parse backend
+  * GET - retrieve user profile given valid login info
+ 
+* Shared Queue Screen:
+  * GET - refresh/query current state of queue 
+  * POST - add song to queue
+  * POST - create an upvote to a track suggestion
+  * POST - create a downvote to a track suggestion
+* Search Screen:
+  * GET - query spotify database for song matching search terms
