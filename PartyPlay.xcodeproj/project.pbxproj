@@ -21,6 +21,8 @@
 		8EC7A1EB26A211E400902FD1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC7A1EA26A211E400902FD1 /* SpotifyiOS.xcframework */; };
 		8EC7A1EC26A211E400902FD1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC7A1EA26A211E400902FD1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1F526A694A500902FD1 /* AuthViewController.m */; };
+		8EC7A1FC26A7477C00902FD1 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1FB26A7477C00902FD1 /* Track.m */; };
+		8EC7A1FF26A7642900902FD1 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1FE26A7642900902FD1 /* Room.m */; };
 		A0397549EDD8329CF36D3768 /* Pods_PartyPlayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */; };
 		A4F0E462FE08952810788E86 /* Pods_PartyPlay_PartyPlayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F0970CB54BD72754F804F7 /* Pods_PartyPlay_PartyPlayUITests.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,10 @@
 		8EC7A1EA26A211E400902FD1 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "PartyPlay/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		8EC7A1F426A694A500902FD1 /* AuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		8EC7A1F526A694A500902FD1 /* AuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		8EC7A1FA26A7477C00902FD1 /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		8EC7A1FB26A7477C00902FD1 /* Track.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		8EC7A1FD26A7642900902FD1 /* Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		8EC7A1FE26A7642900902FD1 /* Room.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
 		BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3695904C31E4377DB05DE5 /* Pods_PartyPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39C6EA9F7A74D53EEFD5E1B /* Pods-PartyPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPlay.debug.xcconfig"; path = "Target Support Files/Pods-PartyPlay/Pods-PartyPlay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,7 +137,6 @@
 				1377D3937BBD82707EBEE0EC /* Pods-PartyPlayTests.debug.xcconfig */,
 				6938606526839CA9A26A0DED /* Pods-PartyPlayTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,6 +165,8 @@
 		8E7785A7269FE76A006D786A /* PartyPlay */ = {
 			isa = PBXGroup;
 			children = (
+				8EC7A1F826A7474E00902FD1 /* Cells */,
+				8EC7A1F726A7474300902FD1 /* Models */,
 				8EC7A1E326A1461D00902FD1 /* API */,
 				8E7785DD269FE798006D786A /* View Controllers */,
 				8E7785A8269FE76A006D786A /* AppDelegate.h */,
@@ -223,6 +230,24 @@
 				8EC7A1E526A1465300902FD1 /* APIManager.m */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		8EC7A1F726A7474300902FD1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8EC7A1FA26A7477C00902FD1 /* Track.h */,
+				8EC7A1FB26A7477C00902FD1 /* Track.m */,
+				8EC7A1FD26A7642900902FD1 /* Room.h */,
+				8EC7A1FE26A7642900902FD1 /* Room.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8EC7A1F826A7474E00902FD1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,11 +488,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC7A1FC26A7477C00902FD1 /* Track.m in Sources */,
 				8E7785E0269FE7A7006D786A /* LoginViewController.m in Sources */,
 				8E7785AA269FE76A006D786A /* AppDelegate.m in Sources */,
 				8E7785BB269FE76C006D786A /* main.m in Sources */,
 				8E7785AD269FE76A006D786A /* SceneDelegate.m in Sources */,
 				8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */,
+				8EC7A1FF26A7642900902FD1 /* Room.m in Sources */,
 				8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
