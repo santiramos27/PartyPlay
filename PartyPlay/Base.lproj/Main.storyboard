@@ -124,7 +124,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2UC-ca-EXt" kind="show" id="dHZ-Ko-IUL"/>
+                                            <segue destination="YgI-1n-O2r" kind="show" id="dHZ-Ko-IUL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -158,7 +158,7 @@
             </objects>
             <point key="canvasLocation" x="1360" y="112.32227488151658"/>
         </scene>
-        <!--View Controller-->
+        <!--Join a Room-->
         <scene sceneID="nDe-ym-G14">
             <objects>
                 <viewController id="2UC-ca-EXt" sceneMemberID="viewController">
@@ -168,11 +168,11 @@
                         <viewLayoutGuide key="safeArea" id="B5B-dy-1e3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uiQ-QV-e5F"/>
+                    <navigationItem key="navigationItem" title="Join a Room" id="uiQ-QV-e5F"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vkb-X5-aI1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="704"/>
+            <point key="canvasLocation" x="3440" y="703.79146919431275"/>
         </scene>
         <!--Create Room-->
         <scene sceneID="TKh-Xf-2ch">
@@ -219,6 +219,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cgw-4g-Waq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2544.6153846153848" y="-37.677725118483409"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gfC-Ny-8sZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="YgI-1n-O2r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hxu-Ix-34m"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rfw-zK-Dha">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2UC-ca-EXt" kind="relationship" relationship="rootViewController" id="2TJ-VS-0YL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDT-W4-ngY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2510.7692307692305" y="703.79146919431275"/>
         </scene>
     </scenes>
     <resources>
