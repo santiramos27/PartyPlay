@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Room : PFObject<PFSubclassing>
 
 @property(nonatomic, strong) NSString *roomName;
-@property(nonatomic, strong) NSString *joinCode;
+@property(nonatomic, strong) NSString *roomCode;
 @property(nonatomic, strong) NSMutableArray *sharedQueue;
 @property(nonatomic, strong) NSNumber *numGuests;
 @property(nonatomic, strong) PFUser *host;

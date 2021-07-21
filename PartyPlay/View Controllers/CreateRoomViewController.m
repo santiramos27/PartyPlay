@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
 - (IBAction)didTapCreate:(id)sender {
     [Room createRoom:self.roomNameField.text withCode:self.roomCodeField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
@@ -30,6 +31,9 @@
                 NSLog(@"Room creation failed");
             }
     }];
+}
+- (IBAction)didTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 /*

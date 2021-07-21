@@ -10,19 +10,19 @@
 @implementation Room
 
 @dynamic roomName;
-@dynamic joinCode;
+@dynamic roomCode;
 @dynamic sharedQueue;
 @dynamic numGuests;
 @dynamic host;
 
-+ (nonnull NSString *)parseClassName {
++ (nonnull NSString *)parseClassName{
         return @"Room";
     }
 
-+ (void) createRoom: (NSString * _Nullable)name withCode: ( NSString * _Nullable )code withCompletion: (PFBooleanResultBlock  _Nullable)completion{
++ (void)createRoom: (NSString * _Nullable)name withCode: ( NSString * _Nullable )code withCompletion: (PFBooleanResultBlock  _Nullable)completion{
     Room  *room = [Room new];
     room.roomName = name;
-    room.joinCode = code;
+    room.roomCode = code;
     room.host = [PFUser currentUser];
     
     [room saveInBackgroundWithBlock:completion];

@@ -161,18 +161,62 @@
         <!--Join a Room-->
         <scene sceneID="nDe-ym-G14">
             <objects>
-                <viewController id="2UC-ca-EXt" sceneMemberID="viewController">
+                <viewController id="2UC-ca-EXt" customClass="JoinRoomViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bLq-zY-Xum">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-sP-1ED">
+                                <rect key="frame" x="29" y="153" width="143" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Room Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk3-AU-O1h">
+                                <rect key="frame" x="29" y="228" width="139" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQO-Oi-ktI">
+                                <rect key="frame" x="200" y="221" width="147" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3uQ-Y0-6TZ">
+                                <rect key="frame" x="200" y="146" width="147" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="B5B-dy-1e3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Join a Room" id="uiQ-QV-e5F"/>
+                    <navigationItem key="navigationItem" title="Join a Room" id="uiQ-QV-e5F">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="xwY-kO-f2P">
+                            <connections>
+                                <action selector="didTapCancel:" destination="2UC-ca-EXt" id="xTv-JO-DIT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Join Room" id="iVk-XQ-9a3">
+                            <connections>
+                                <action selector="didTapJoin:" destination="2UC-ca-EXt" id="zb0-Lx-p7K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="roomCodeField" destination="AQO-Oi-ktI" id="drV-is-WKC"/>
+                        <outlet property="roomNameField" destination="3uQ-Y0-6TZ" id="bsP-9p-CZJ"/>
+                        <segue destination="zcZ-pr-wV6" kind="show" identifier="joinSegue" id="i7K-bn-WWH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vkb-X5-aI1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3440" y="703.79146919431275"/>
+            <point key="canvasLocation" x="3474" y="704"/>
         </scene>
         <!--Create Room-->
         <scene sceneID="TKh-Xf-2ch">
@@ -219,7 +263,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Room" id="NCb-Je-3GL">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ieV-2v-9vS"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="ieV-2v-9vS">
+                            <connections>
+                                <action selector="didTapCancel:" destination="xSa-kg-JcF" id="W6p-Md-uA9"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Open Room" id="6yO-mc-hjJ">
                             <connections>
                                 <action selector="didTapCreate:" destination="xSa-kg-JcF" id="HmH-Hf-NE4"/>
@@ -236,21 +284,33 @@
             </objects>
             <point key="canvasLocation" x="3473.8461538461538" y="-37.677725118483409"/>
         </scene>
-        <!--View Controller-->
+        <!--Shared Room-->
         <scene sceneID="dhi-3h-Bpk">
             <objects>
-                <viewController id="zcZ-pr-wV6" sceneMemberID="viewController">
+                <viewController id="zcZ-pr-wV6" customClass="SharedRoomViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nhj-xS-ngd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RoomName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esU-bH-O7D">
+                                <rect key="frame" x="79" y="138" width="233" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ciz-d8-KGN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0bT-dd-pdw"/>
+                    <navigationItem key="navigationItem" title="Shared Room" id="0bT-dd-pdw"/>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="esU-bH-O7D" id="Ro5-ml-7T0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcO-M7-76t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4726" y="-38"/>
+            <point key="canvasLocation" x="4724.6153846153848" y="-38.388625592417057"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r9f-VI-OpL">
@@ -291,6 +351,9 @@
             <point key="canvasLocation" x="2510.7692307692305" y="703.79146919431275"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="i7K-bn-WWH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
