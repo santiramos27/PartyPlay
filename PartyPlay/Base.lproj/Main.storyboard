@@ -107,7 +107,7 @@
         <!--View Controller-->
         <scene sceneID="TLJ-wK-9E0">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="6do-IW-0B7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthenticatedViewController" modalPresentationStyle="fullScreen" id="6do-IW-0B7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XqI-lg-1J3">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,7 +177,7 @@
         <!--Create Room-->
         <scene sceneID="TKh-Xf-2ch">
             <objects>
-                <viewController id="xSa-kg-JcF" sceneMemberID="viewController">
+                <viewController id="xSa-kg-JcF" customClass="CreateRoomViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dg4-YV-WQA">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,18 +188,69 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lu-Eo-d3S">
+                                <rect key="frame" x="53" y="261" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bV-bq-JqF">
+                                <rect key="frame" x="213" y="172" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AN-sg-dgZ">
+                                <rect key="frame" x="213" y="248" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tlv-3G-pSD">
+                                <rect key="frame" x="53" y="179" width="98" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tua-HS-jvb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Room" id="NCb-Je-3GL">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ieV-2v-9vS"/>
-                        <barButtonItem key="rightBarButtonItem" title="Open Room" id="6yO-mc-hjJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Open Room" id="6yO-mc-hjJ">
+                            <connections>
+                                <action selector="didTapCreate:" destination="xSa-kg-JcF" id="HmH-Hf-NE4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="roomCodeField" destination="3AN-sg-dgZ" id="sUv-q4-hwi"/>
+                        <outlet property="roomNameField" destination="6bV-bq-JqF" id="2ZM-0Y-E65"/>
+                        <segue destination="zcZ-pr-wV6" kind="show" identifier="roomSegue" id="Zqx-IP-jyS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hc4-e5-NBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3473.8461538461538" y="-37.677725118483409"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dhi-3h-Bpk">
+            <objects>
+                <viewController id="zcZ-pr-wV6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nhj-xS-ngd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ciz-d8-KGN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0bT-dd-pdw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcO-M7-76t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4726" y="-38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r9f-VI-OpL">

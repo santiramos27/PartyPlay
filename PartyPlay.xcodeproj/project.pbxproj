@@ -23,6 +23,7 @@
 		8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1F526A694A500902FD1 /* AuthViewController.m */; };
 		8EC7A1FC26A7477C00902FD1 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1FB26A7477C00902FD1 /* Track.m */; };
 		8EC7A1FF26A7642900902FD1 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1FE26A7642900902FD1 /* Room.m */; };
+		8EC7A20226A85F6800902FD1 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A20126A85F6800902FD1 /* CreateRoomViewController.m */; };
 		A0397549EDD8329CF36D3768 /* Pods_PartyPlayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */; };
 		A4F0E462FE08952810788E86 /* Pods_PartyPlay_PartyPlayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F0970CB54BD72754F804F7 /* Pods_PartyPlay_PartyPlayUITests.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,8 @@
 		8EC7A1FB26A7477C00902FD1 /* Track.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		8EC7A1FD26A7642900902FD1 /* Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
 		8EC7A1FE26A7642900902FD1 /* Room.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		8EC7A20026A85F6800902FD1 /* CreateRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateRoomViewController.h; sourceTree = "<group>"; };
+		8EC7A20126A85F6800902FD1 /* CreateRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateRoomViewController.m; sourceTree = "<group>"; };
 		BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3695904C31E4377DB05DE5 /* Pods_PartyPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39C6EA9F7A74D53EEFD5E1B /* Pods-PartyPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPlay.debug.xcconfig"; path = "Target Support Files/Pods-PartyPlay/Pods-PartyPlay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				8E7785DF269FE7A7006D786A /* LoginViewController.m */,
 				8EC7A1F426A694A500902FD1 /* AuthViewController.h */,
 				8EC7A1F526A694A500902FD1 /* AuthViewController.m */,
+				8EC7A20026A85F6800902FD1 /* CreateRoomViewController.h */,
+				8EC7A20126A85F6800902FD1 /* CreateRoomViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				8E7785E0269FE7A7006D786A /* LoginViewController.m in Sources */,
 				8E7785AA269FE76A006D786A /* AppDelegate.m in Sources */,
 				8E7785BB269FE76C006D786A /* main.m in Sources */,
+				8EC7A20226A85F6800902FD1 /* CreateRoomViewController.m in Sources */,
 				8E7785AD269FE76A006D786A /* SceneDelegate.m in Sources */,
 				8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */,
 				8EC7A1FF26A7642900902FD1 /* Room.m in Sources */,
