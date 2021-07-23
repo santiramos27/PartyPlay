@@ -14,6 +14,5 @@ int main(int argc, char * argv[]) {
         // Setup code that might create autoreleased objects goes here.
         appDelegateClassName = NSStringFromClass([AppDelegate class]);
     }
-    [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"spotify:"]];
     return UIApplicationMain(argc, argv, nil, appDelegateClassName);
 }

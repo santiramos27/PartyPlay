@@ -8,10 +8,12 @@
 #import "CreateRoomViewController.h"
 #import "SceneDelegate.h"
 #import "Room.h"
+#import "SharedRoomViewController.h"
 
 @interface CreateRoomViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *roomNameField;
 @property (weak, nonatomic) IBOutlet UITextField *roomCodeField;
+@property (strong, nonatomic) Room *room;
 
 @end
 
@@ -23,6 +25,9 @@
 }
 
 - (IBAction)didTapCreate:(id)sender {
+    self.room.roomName = self.roomNameField.text;
+    self.room.roomCode = self.roomCodeField.text;
+    
     [Room createRoom:self.roomNameField.text withCode:self.roomCodeField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
                 [self performSegueWithIdentifier:@"roomSegue" sender:nil];
@@ -32,18 +37,16 @@
             }
     }];
 }
-- (IBAction)didTapCancel:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
-}
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    SharedRoomViewController *sharedRoom = [segue destinationViewController];
+    sharedRoom.room = self.room;
 }
-*/
+
+
 
 @end

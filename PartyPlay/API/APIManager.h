@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)spotifyAuth;
+- (void)spotifyAuth:(void(^)(BOOL success, NSError * error))completion;
+
+- (NSString *)getToken;
 
 
 @end

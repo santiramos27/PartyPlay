@@ -6,6 +6,8 @@
 //
 
 #import "APIManager.h"
+#import "UIImageView+AFNetworking.h"
+#import "AFHTTPSessionManager.h"
 
 static NSString * const SpotifyClientID = @"a37725494d5446f389585c9ac6f9f848";
 static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://spotify-login-callback";
@@ -16,6 +18,7 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 @property (nonatomic, strong) SPTSessionManager *sessionManager;
 @property (nonatomic, strong) SPTConfiguration *configuration;
 @property (nonatomic, strong) SPTAppRemote *appRemote;
+@property (nonatomic, strong) NSString *authToken;
 
 @end
 
@@ -34,7 +37,7 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     self.configuration  = [[SPTConfiguration alloc] initWithClientID:SpotifyClientID redirectURL:[NSURL URLWithString:SpotifyRedirectURLString]];
     self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    self.configuration.playURI = @"";
+    self.configuration.playURI = @"spotify:track:20I6sIOMTCkB6w7ryavxtO";
     self.configuration.tokenSwapURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/token"];
     self.configuration.tokenRefreshURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/refresh_token"];
     
@@ -44,15 +47,22 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     return self;
 }
 
-- (void)spotifyAuth{
+- (void)spotifyAuth:(void(^)(BOOL success, NSError * error))completion{
     SPTScope requestedScope = SPTAppRemoteControlScope;
     [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
+    completion(true,nil);
 }
 
+- (NSString *)getToken{
+    return self.authToken;
+}
+
+
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session{
+    self.authToken = session.accessToken;
     self.appRemote.connectionParameters.accessToken = session.accessToken;
     [self.appRemote connect];
-    NSLog(@"success: %@", session);
+    NSLog(@"success: %@", session.accessToken);
 }
 
 - (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error{

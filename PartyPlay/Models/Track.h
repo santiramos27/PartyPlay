@@ -11,6 +11,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Track : NSObject
 
+@property (strong, nonatomic) NSString *songID;
+@property (strong, nonatomic) NSString *songName;
+@property (strong, nonatomic) NSString *artistName;
+@property (strong, nonatomic) NSNumber *numUpvotes;
+@property (strong, nonatomic) NSNumber *numDownvotes;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
++ (NSMutableArray *)tracksWithArray:(NSArray *)dictionaries;
+
 @end
 
 NS_ASSUME_NONNULL_END

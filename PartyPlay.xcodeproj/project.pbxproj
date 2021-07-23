@@ -26,6 +26,9 @@
 		8EC7A20226A85F6800902FD1 /* CreateRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A20126A85F6800902FD1 /* CreateRoomViewController.m */; };
 		8EC7A20526A8B32F00902FD1 /* SharedRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A20426A8B32F00902FD1 /* SharedRoomViewController.m */; };
 		8EC7A20826A8B34D00902FD1 /* JoinRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A20726A8B34D00902FD1 /* JoinRoomViewController.m */; };
+		8EC7A20B26A8D0BC00902FD1 /* QueueSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A20A26A8D0BC00902FD1 /* QueueSetupViewController.m */; };
+		8EC7A20E26AA16AD00902FD1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A20D26AA16AD00902FD1 /* HomeViewController.m */; };
+		8EC7A21126AAFC2800902FD1 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A21026AAFC2800902FD1 /* SearchResultCell.m */; };
 		A0397549EDD8329CF36D3768 /* Pods_PartyPlayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */; };
 		A4F0E462FE08952810788E86 /* Pods_PartyPlay_PartyPlayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F0970CB54BD72754F804F7 /* Pods_PartyPlay_PartyPlayUITests.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +104,12 @@
 		8EC7A20426A8B32F00902FD1 /* SharedRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedRoomViewController.m; sourceTree = "<group>"; };
 		8EC7A20626A8B34D00902FD1 /* JoinRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JoinRoomViewController.h; sourceTree = "<group>"; };
 		8EC7A20726A8B34D00902FD1 /* JoinRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JoinRoomViewController.m; sourceTree = "<group>"; };
+		8EC7A20926A8D0BC00902FD1 /* QueueSetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueueSetupViewController.h; sourceTree = "<group>"; };
+		8EC7A20A26A8D0BC00902FD1 /* QueueSetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueueSetupViewController.m; sourceTree = "<group>"; };
+		8EC7A20C26AA16AD00902FD1 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		8EC7A20D26AA16AD00902FD1 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		8EC7A20F26AAFC2800902FD1 /* SearchResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		8EC7A21026AAFC2800902FD1 /* SearchResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
 		BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3695904C31E4377DB05DE5 /* Pods_PartyPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39C6EA9F7A74D53EEFD5E1B /* Pods-PartyPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPlay.debug.xcconfig"; path = "Target Support Files/Pods-PartyPlay/Pods-PartyPlay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +231,10 @@
 				8EC7A20426A8B32F00902FD1 /* SharedRoomViewController.m */,
 				8EC7A20626A8B34D00902FD1 /* JoinRoomViewController.h */,
 				8EC7A20726A8B34D00902FD1 /* JoinRoomViewController.m */,
+				8EC7A20926A8D0BC00902FD1 /* QueueSetupViewController.h */,
+				8EC7A20A26A8D0BC00902FD1 /* QueueSetupViewController.m */,
+				8EC7A20C26AA16AD00902FD1 /* HomeViewController.h */,
+				8EC7A20D26AA16AD00902FD1 /* HomeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -261,6 +274,8 @@
 		8EC7A1F826A7474E00902FD1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8EC7A20F26AAFC2800902FD1 /* SearchResultCell.h */,
+				8EC7A21026AAFC2800902FD1 /* SearchResultCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -513,7 +528,10 @@
 				8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */,
 				8EC7A1FF26A7642900902FD1 /* Room.m in Sources */,
 				8EC7A20526A8B32F00902FD1 /* SharedRoomViewController.m in Sources */,
+				8EC7A20B26A8D0BC00902FD1 /* QueueSetupViewController.m in Sources */,
 				8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */,
+				8EC7A21126AAFC2800902FD1 /* SearchResultCell.m in Sources */,
+				8EC7A20E26AA16AD00902FD1 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

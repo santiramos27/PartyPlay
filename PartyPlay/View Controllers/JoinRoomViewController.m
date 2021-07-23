@@ -9,6 +9,8 @@
 #import "Parse/Parse.h"
 #import "Room.h"
 #import "SharedRoomViewController.h"
+#import "SceneDelegate.h"
+#import "HomeViewController.h"
 
 @interface JoinRoomViewController ()
 
@@ -40,7 +42,10 @@
     
 }
 - (IBAction)didTapCancel:(id)sender {
-    [self dismissViewControllerAnimated:true completion:nil];
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HomeViewController *homeViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    myDelegate.window.rootViewController = homeViewController;
 }
 
 
