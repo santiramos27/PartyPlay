@@ -29,7 +29,7 @@
     Room *room = [[Room alloc] init];
     room.roomName = self.roomNameField.text;
     room.roomCode = self.roomCodeField.text;
-    room.sharedQueue = [Track unPackTracks:self.room.sharedQueue];
+    room.sharedQueue = [Track unPackTracks:self.sharedQueue];
     self.room = room;
     
     [Room createRoom:self.room.roomName withCode:self.room.roomCode withQueue:self.room.sharedQueue withCompletion:^(BOOL succeeded, NSError * _Nullable error){

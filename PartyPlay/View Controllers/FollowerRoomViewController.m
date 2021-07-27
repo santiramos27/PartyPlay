@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", self.room.roomName];
-    NSLog(@"%@", [self.room.sharedQueue count]);
     for(NSDictionary *track in self.room.sharedQueue){
         NSLog(@"%@", track[@"songName"]);
     }
