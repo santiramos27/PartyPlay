@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tracksWithArray:(NSArray *)dictionaries;
++ (NSMutableArray *)unPackTracks:(NSMutableArray *)queue;
 
 @end
 

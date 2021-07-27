@@ -236,7 +236,7 @@
             </objects>
             <point key="canvasLocation" x="4366.1538461538457" y="682.46445497630327"/>
         </scene>
-        <!--Queue Setup View Controller-->
+        <!--Queue Setup-->
         <scene sceneID="uOB-wB-T9r">
             <objects>
                 <viewController id="QPf-c1-U82" customClass="QueueSetupViewController" sceneMemberID="viewController">
@@ -244,6 +244,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-hB-ILU">
+                                <rect key="frame" x="171" y="167" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="didTapSearch:" destination="QPf-c1-U82" eventType="touchUpInside" id="aZI-q3-EfV"/>
+                                </connections>
+                            </button>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEn-R2-rtT">
                                 <rect key="frame" x="0.0" y="110" width="390" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -254,28 +262,42 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="67" id="zn5-Cq-JRd" customClass="SearchResultCell">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="103" id="zn5-Cq-JRd" customClass="SearchResultCell">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn5-Cq-JRd" id="yJH-gn-uj5">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ix7-UQ-h3K">
-                                                    <rect key="frame" x="20" y="40" width="91" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Track Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRX-Vp-7vu">
-                                                    <rect key="frame" x="20" y="11" width="340" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRX-Vp-7vu">
+                                                    <rect key="frame" x="20" y="11" width="97" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ix7-UQ-h3K">
+                                                    <rect key="frame" x="19.999999999999993" y="52" width="90.333333333333314" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQt-uS-Pvt">
+                                                    <rect key="frame" x="275" y="48" width="95" height="30"/>
+                                                    <state key="normal" title="Add to Queue"/>
+                                                    <connections>
+                                                        <action selector="didTapAdd:" destination="zn5-Cq-JRd" eventType="touchUpInside" id="IrN-i5-VKe"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tRX-Vp-7vu" firstAttribute="top" secondItem="yJH-gn-uj5" secondAttribute="topMargin" id="JZL-16-Y41"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ix7-UQ-h3K" secondAttribute="bottom" constant="30" id="JlL-Mt-SFI"/>
+                                                <constraint firstItem="ix7-UQ-h3K" firstAttribute="leading" secondItem="yJH-gn-uj5" secondAttribute="leadingMargin" id="Kod-Hb-wcn"/>
+                                                <constraint firstItem="tRX-Vp-7vu" firstAttribute="leading" secondItem="yJH-gn-uj5" secondAttribute="leadingMargin" id="ToU-k5-tVo"/>
+                                                <constraint firstItem="AQt-uS-Pvt" firstAttribute="trailing" secondItem="yJH-gn-uj5" secondAttribute="trailingMargin" id="W1W-66-TvM"/>
+                                                <constraint firstItem="AQt-uS-Pvt" firstAttribute="top" secondItem="yJH-gn-uj5" secondAttribute="topMargin" constant="37" id="aac-oc-8Ok"/>
+                                                <constraint firstItem="ix7-UQ-h3K" firstAttribute="top" secondItem="tRX-Vp-7vu" secondAttribute="bottom" constant="20" id="xS4-cW-8GY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="artistNameLabel" destination="ix7-UQ-h3K" id="5tf-Go-Ll0"/>
@@ -284,19 +306,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-hB-ILU">
-                                <rect key="frame" x="171" y="167" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="didTapSearch:" destination="QPf-c1-U82" eventType="touchUpInside" id="aZI-q3-EfV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eYv-79-4Q6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zLM-Md-b6G">
+                    <navigationItem key="navigationItem" title="Queue Setup" id="zLM-Md-b6G">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="brD-yG-fEi">
                             <connections>
                                 <action selector="didTapCancel:" destination="QPf-c1-U82" id="93S-PG-JgT"/>
@@ -304,7 +318,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Room Setup" id="NEQ-fN-7W2">
                             <connections>
-                                <segue destination="xSa-kg-JcF" kind="presentation" id="T9P-QB-eYS"/>
+                                <segue destination="xSa-kg-JcF" kind="show" identifier="createSegue" id="T9P-QB-eYS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -317,12 +331,12 @@
             </objects>
             <point key="canvasLocation" x="4366.1538461538457" y="-12.085308056872037"/>
         </scene>
-        <!--Create Room View Controller-->
+        <!--Create a Room-->
         <scene sceneID="TKh-Xf-2ch">
             <objects>
                 <viewController id="xSa-kg-JcF" customClass="CreateRoomViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dg4-YV-WQA">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lu-Eo-d3S">
@@ -363,20 +377,51 @@
                         <viewLayoutGuide key="safeArea" id="tua-HS-jvb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Create a Room" id="FDd-Cw-4b0"/>
                     <connections>
                         <outlet property="roomCodeField" destination="3AN-sg-dgZ" id="sUv-q4-hwi"/>
                         <outlet property="roomNameField" destination="6bV-bq-JqF" id="2ZM-0Y-E65"/>
-                        <segue destination="zcZ-pr-wV6" kind="show" identifier="roomSegue" id="Zqx-IP-jyS"/>
+                        <segue destination="616-kU-Lfe" kind="show" identifier="roomSegue" id="jTb-6q-yf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hc4-e5-NBv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5449.2307692307686" y="-12.085308056872037"/>
         </scene>
+        <!--Host Room View Controller-->
+        <scene sceneID="9h0-ay-h6f">
+            <objects>
+                <viewController id="616-kU-Lfe" customClass="HostRoomViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FJ2-Su-08N">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC5-5f-45x">
+                                <rect key="frame" x="55" y="128" width="278" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NbQ-Rg-duz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PVe-G6-s6q">
+                        <barButtonItem key="rightBarButtonItem" title="Now Playing" id="mtE-m2-Dd1"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="AC5-5f-45x" id="XPq-uh-sQM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6p-6k-LB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6504.6153846153848" y="-12.085308056872037"/>
+        </scene>
         <!--Shared Room-->
         <scene sceneID="dhi-3h-Bpk">
             <objects>
-                <viewController id="zcZ-pr-wV6" customClass="SharedRoomViewController" sceneMemberID="viewController">
+                <viewController id="zcZ-pr-wV6" customClass="FollowerRoomViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nhj-xS-ngd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,7 +439,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Shared Room" id="0bT-dd-pdw"/>
                     <connections>
-                        <outlet property="welcomeLabel" destination="esU-bH-O7D" id="Ro5-ml-7T0"/>
+                        <outlet property="welcomeLabel" destination="esU-bH-O7D" id="LR0-By-okZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcO-M7-76t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -440,9 +485,6 @@
             <point key="canvasLocation" x="1522" y="112"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="i7K-bn-WWH"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

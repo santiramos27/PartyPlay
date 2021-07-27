@@ -12,11 +12,13 @@
 #import "HomeViewController.h"
 #import "Track.h"
 #import "SearchResultCell.h"
+#import "CreateRoomViewController.h"
 
 @interface QueueSetupViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *results;
+@property (nonatomic, strong) NSMutableArray *sharedQueue;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -27,6 +29,8 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    NSMutableArray *shared = [NSMutableArray array];
+    self.sharedQueue = shared;
     // Do any additional setup after loading the view.
 }
 
@@ -39,6 +43,16 @@
 
 - (IBAction)didTapSearch:(id)sender {
     [self getSearchResults:self.searchBar.text];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)getSearchResults:(NSString *)query {
@@ -75,11 +89,19 @@
     SearchResultCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
     
     Track *track = self.results[indexPath.row];
+    NSLog(@"%@", track.artistName);
+    cell.sharedQueue = self.sharedQueue;
+    cell.track = track;
     cell.trackNameLabel.text = track.songName;
     cell.artistNameLabel.text = track.artistName;
-    
     return cell;
     
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CreateRoomViewController *createRoom = [segue destinationViewController];
+    createRoom.sharedQueue = self.sharedQueue;
+}
+
 
 @end

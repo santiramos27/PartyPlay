@@ -19,10 +19,11 @@
         return @"Room";
     }
 
-+ (void)createRoom: (NSString * _Nullable)name withCode: ( NSString * _Nullable )code withCompletion: (PFBooleanResultBlock  _Nullable)completion{
-    Room  *room = [Room new];
++ (void)createRoom: (NSString * _Nullable)name withCode: ( NSString * _Nullable )code withQueue:( NSMutableArray * _Nullable )sharedQueue withCompletion: (PFBooleanResultBlock  _Nullable)completion{
+    Room *room = [Room new];
     room.roomName = name;
     room.roomCode = code;
+    room.sharedQueue = sharedQueue;
     room.host = [PFUser currentUser];
     
     [room saveInBackgroundWithBlock:completion];

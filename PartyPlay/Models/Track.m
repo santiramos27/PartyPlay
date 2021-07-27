@@ -31,4 +31,13 @@
     return tracks;
 }
 
++ (NSMutableArray *)unPackTracks:(NSMutableArray *)queue{
+    NSMutableArray *unpacked = [NSMutableArray array];
+    for (Track *track in queue){
+        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songName, @"songName", track.artistName, @"aristName", track.songID, @"songID", track.numUpvotes, @"numUpvotes", track.numDownvotes, @"numDownvotes", nil];
+        [unpacked addObject:song];
+    }
+    return unpacked;
+}
+
 @end

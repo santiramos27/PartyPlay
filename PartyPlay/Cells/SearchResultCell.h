@@ -6,12 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Track.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SearchResultCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *trackNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+@property (strong, nonatomic) Track *track;
+@property (strong, nonatomic) NSMutableArray *sharedQueue;
 
 @end
 

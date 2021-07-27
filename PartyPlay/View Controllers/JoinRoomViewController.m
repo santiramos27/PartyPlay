@@ -8,7 +8,7 @@
 #import "JoinRoomViewController.h"
 #import "Parse/Parse.h"
 #import "Room.h"
-#import "SharedRoomViewController.h"
+#import "FollowerRoomViewController.h"
 #import "SceneDelegate.h"
 #import "HomeViewController.h"
 
@@ -54,8 +54,8 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier  isEqual: @"joinSegue"] ){
-        SharedRoomViewController *sharedRoom = [segue destinationViewController];
-        sharedRoom.room = self.room;
+        FollowerRoomViewController *followerRoom = [segue destinationViewController];
+        followerRoom.room = self.room;
         //pass personal profile to ComposeViewController to display profile picture
     }
 }

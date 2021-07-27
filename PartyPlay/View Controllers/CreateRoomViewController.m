@@ -8,7 +8,8 @@
 #import "CreateRoomViewController.h"
 #import "SceneDelegate.h"
 #import "Room.h"
-#import "SharedRoomViewController.h"
+#import "HostRoomViewController.h"
+#import "Track.h"
 
 @interface CreateRoomViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *roomNameField;
@@ -25,10 +26,13 @@
 }
 
 - (IBAction)didTapCreate:(id)sender {
-    self.room.roomName = self.roomNameField.text;
-    self.room.roomCode = self.roomCodeField.text;
+    Room *room = [[Room alloc] init];
+    room.roomName = self.roomNameField.text;
+    room.roomCode = self.roomCodeField.text;
+    room.sharedQueue = [Track unPackTracks:self.room.sharedQueue];
+    self.room = room;
     
-    [Room createRoom:self.roomNameField.text withCode:self.roomCodeField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error){
+    [Room createRoom:self.room.roomName withCode:self.room.roomCode withQueue:self.room.sharedQueue withCompletion:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
                 [self performSegueWithIdentifier:@"roomSegue" sender:nil];
             }
@@ -43,8 +47,8 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    SharedRoomViewController *sharedRoom = [segue destinationViewController];
-    sharedRoom.room = self.room;
+    HostRoomViewController *hostRoom = [segue destinationViewController];
+    hostRoom.room = self.room;
 }
 
 

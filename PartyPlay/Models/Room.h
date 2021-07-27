@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (nonnull NSString *)parseClassName;
 
-+ (void) createRoom: (NSString * _Nullable)name withCode: ( NSString * _Nullable )code withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void)createRoom: (NSString * _Nullable)name withCode: ( NSString * _Nullable )code withQueue:( NSMutableArray * _Nullable )sharedQueue withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 
 @end

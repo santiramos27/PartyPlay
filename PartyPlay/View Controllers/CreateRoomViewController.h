@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateRoomViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableArray *sharedQueue;
+
 @end
 
 NS_ASSUME_NONNULL_END
