@@ -21,6 +21,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)didTapAdd:(id)sender {
+    self.addToQueueButton.selected = true;
     self.track.addedBy = [[PFUser currentUser] username];
     [self.sharedQueue addObject:self.track];
     NSLog(@"track added");

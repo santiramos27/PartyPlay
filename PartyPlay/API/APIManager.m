@@ -8,6 +8,7 @@
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "AFHTTPSessionManager.h"
+#import "Track.h"
 
 static NSString * const SpotifyClientID = @"a37725494d5446f389585c9ac6f9f848";
 static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://spotify-login-callback";
@@ -55,6 +56,33 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 
 - (NSString *)getToken{
     return self.authToken;
+}
+
+- (void)getSearchResults:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion {
+    NSString *encodedQuery = [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *URLString = [NSString stringWithFormat:@"https://api.spotify.com/v1/search?q=%@&type=track", encodedQuery];
+    
+    NSString *token = [NSString stringWithFormat:@"Bearer %@",[[APIManager shared] getToken]];
+    
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
+    [request setValue:token forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           if (error != nil) {
+               NSLog(@"%@", [error localizedDescription]);
+               completion(nil, error);
+           }
+           else {
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSDictionary *tracks = dataDictionary[@"tracks"];
+               NSMutableArray *items = [Track tracksWithArray:tracks[@"items"]];
+               completion(items, nil);
+           }
+       }];
+    [task resume];
 }
 
 

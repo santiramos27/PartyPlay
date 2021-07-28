@@ -16,11 +16,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (strong, nonatomic) NSMutableArray *sharedQueue;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
-@property (nonatomic, strong) PFLiveQueryClient *client;
+@property (nonatomic, strong) PFLiveQueryClient *liveQueryClient;
 @property (nonatomic, strong) PFQuery *query;
 @property (nonatomic, strong) PFLiveQuerySubscription *subscription;
 
@@ -40,6 +39,15 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(reloadQueue) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://partyplay.b4a.io" applicationId:@"OlNro9zsZF3pl4qjqy1iLond1Glvp0BZrnqkw0SO" clientKey:@"WaZjcXNKrrMU4cZYOaiR1HdvxC9CV5z4m10IhWte"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roomName == %@ AND roomCode == %@", self.room.roomName, self.room.roomCode];
+    self.query = [PFQuery queryWithClassName:@"Room" predicate:predicate];
+    self.subscription = [self.liveQueryClient subscribeToQuery:self.query];
+    [self.subscription addUpdateHandler:^(PFQuery<PFObject *> * _Nonnull query, PFObject * _Nonnull object) {
+        NSLog(@"there has been a change to the queue");
+        [self reloadQueue];
+    }];
 
     // Do any additional setup after loading the view.
 }

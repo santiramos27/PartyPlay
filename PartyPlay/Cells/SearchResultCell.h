@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
 @property (strong, nonatomic) Track *track;
 @property (strong, nonatomic) NSMutableArray *sharedQueue;
+@property (weak, nonatomic) IBOutlet UIButton *addToQueueButton;
 
 @end
 

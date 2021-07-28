@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)spotifyAuth:(void(^)(BOOL success, NSError * error))completion;
 
+- (void)getSearchResults:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion;
+
 - (NSString *)getToken;
 
 

@@ -42,7 +42,7 @@
 }
 
 - (IBAction)didTapSearch:(id)sender {
-    [self getSearchResults:self.searchBar.text];
+    [self fetchSearchResults:self.searchBar.text];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -55,30 +55,16 @@
     [self.searchBar resignFirstResponder];
 }
 
-- (void)getSearchResults:(NSString *)query {
-    NSString *encodedQuery = [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSString *URLString = [NSString stringWithFormat:@"https://api.spotify.com/v1/search?q=%@&type=track", encodedQuery];
-    
-    NSString *token = [NSString stringWithFormat:@"Bearer %@",[[APIManager shared] getToken]];
-    
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
-    [request setValue:token forHTTPHeaderField:@"Authorization"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSDictionary *dict = dataDictionary[@"tracks"];
-               self.results = [Track tracksWithArray:dict[@"items"]];
-               [self.tableView reloadData];
-           }
-       }];
-    [task resume];
+- (void)fetchSearchResults:(NSString *)query {
+    [[APIManager shared] getSearchResults:query withCompletion:^(NSMutableArray *results, NSError *error) {
+        if (results) {
+            self.results = results;
+            [self.tableView reloadData];
+            
+        } else {
+            NSLog(@"Search failed");
+        }
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
