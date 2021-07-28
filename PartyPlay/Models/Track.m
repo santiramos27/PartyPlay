@@ -18,6 +18,8 @@
     NSArray *artists = dictionary[@"artists"];
     NSDictionary *artist = artists[0];
     self.artistName = artist[@"name"];
+    self.numDownvotes = [NSNumber numberWithInt:0];
+    self.numUpvotes = [NSNumber numberWithInt:0];
     
     return self;
 }
@@ -34,10 +36,24 @@
 + (NSMutableArray *)unPackTracks:(NSMutableArray *)queue{
     NSMutableArray *unpacked = [NSMutableArray array];
     for (Track *track in queue){
-        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songName, @"songName", track.artistName, @"aristName", track.songID, @"songID", track.numUpvotes, @"numUpvotes", track.numDownvotes, @"numDownvotes", nil];
+        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songID, @"songID", track.songName, @"songName", track.artistName, @"artistName", track.numUpvotes, @"numUpvotes", track.numDownvotes, @"numDownvotes", track.addedBy, @"addedBy", nil];
         [unpacked addObject:song];
     }
     return unpacked;
 }
 
++ (NSMutableArray *)repackTracks:(NSMutableArray *)queue{
+    NSMutableArray *packed = [NSMutableArray array];
+    for(NSDictionary *dict in queue){
+        Track *track = [[Track alloc] init];
+        track.songID = dict[@"songID"];
+        track.songName = dict[@"songName"];
+        track.artistName = dict[@"artistName"];
+        track.numDownvotes = dict[@"numDownvotes"];
+        track.numUpvotes = dict[@"numUpvotes"];
+        track.addedBy = dict[@"addedBy"];
+        [packed addObject:track];
+    }
+    return packed;
+}
 @end

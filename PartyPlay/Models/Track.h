@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *artistName;
 @property (strong, nonatomic) NSNumber *numUpvotes;
 @property (strong, nonatomic) NSNumber *numDownvotes;
+@property (strong, nonatomic) NSString *addedBy;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tracksWithArray:(NSArray *)dictionaries;
 + (NSMutableArray *)unPackTracks:(NSMutableArray *)queue;
++ (NSMutableArray *)repackTracks:(NSMutableArray *)queue;
 
 @end
 

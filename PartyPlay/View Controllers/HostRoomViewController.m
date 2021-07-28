@@ -7,22 +7,45 @@
 
 #import "HostRoomViewController.h"
 #import "Track.h"
+#import "QueueCell.h"
+#import "Track.h"
 
-@interface HostRoomViewController ()
+@interface HostRoomViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *sharedQueue;
 @end
 
 @implementation HostRoomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", self.room.roomName];
-    for(NSDictionary *track in self.room.sharedQueue){
-        NSLog(@"%@", track[@"songName"]);
-    }
+    self.sharedQueue = [Track repackTracks:self.room.sharedQueue];
     // Do any additional setup after loading the view.
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.room.sharedQueue count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    QueueCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"QueueCell" forIndexPath:indexPath];
+    
+    Track *track = self.sharedQueue[indexPath.row];
+    cell.track = track;
+    cell.room = self.room;
+    cell.trackNameLabel.text = track.songName;
+    cell.artistNameLabel.text = track.artistName;
+    cell.addedByLabel.text = track.addedBy;
+    cell.upvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numUpvotes];
+    cell.downvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numDownvotes];
+    return cell;
+    
+}
+
 /*
 #pragma mark - Navigation
 

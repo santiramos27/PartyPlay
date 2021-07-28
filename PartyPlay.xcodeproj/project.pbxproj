@@ -30,6 +30,7 @@
 		8EC7A21126AAFC2800902FD1 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A21026AAFC2800902FD1 /* SearchResultCell.m */; };
 		8EC7A21426AF7CF300902FD1 /* FollowerRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A21326AF7CF300902FD1 /* FollowerRoomViewController.m */; };
 		8EC7A21726AF7D0100902FD1 /* HostRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A21626AF7D0100902FD1 /* HostRoomViewController.m */; };
+		8EC7A21A26B0BAFF00902FD1 /* QueueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A21926B0BAFF00902FD1 /* QueueCell.m */; };
 		A0397549EDD8329CF36D3768 /* Pods_PartyPlayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */; };
 		A4F0E462FE08952810788E86 /* Pods_PartyPlay_PartyPlayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F0970CB54BD72754F804F7 /* Pods_PartyPlay_PartyPlayUITests.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,8 @@
 		8EC7A21326AF7CF300902FD1 /* FollowerRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowerRoomViewController.m; sourceTree = "<group>"; };
 		8EC7A21526AF7D0100902FD1 /* HostRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostRoomViewController.h; sourceTree = "<group>"; };
 		8EC7A21626AF7D0100902FD1 /* HostRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HostRoomViewController.m; sourceTree = "<group>"; };
+		8EC7A21826B0BAFF00902FD1 /* QueueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueueCell.h; sourceTree = "<group>"; };
+		8EC7A21926B0BAFF00902FD1 /* QueueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueueCell.m; sourceTree = "<group>"; };
 		BB54C40BA22F35195A2EB115 /* Pods_PartyPlayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3695904C31E4377DB05DE5 /* Pods_PartyPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PartyPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39C6EA9F7A74D53EEFD5E1B /* Pods-PartyPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PartyPlay.debug.xcconfig"; path = "Target Support Files/Pods-PartyPlay/Pods-PartyPlay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 			children = (
 				8EC7A20F26AAFC2800902FD1 /* SearchResultCell.h */,
 				8EC7A21026AAFC2800902FD1 /* SearchResultCell.m */,
+				8EC7A21826B0BAFF00902FD1 /* QueueCell.h */,
+				8EC7A21926B0BAFF00902FD1 /* QueueCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				8EC7A1FF26A7642900902FD1 /* Room.m in Sources */,
 				8EC7A20B26A8D0BC00902FD1 /* QueueSetupViewController.m in Sources */,
 				8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */,
+				8EC7A21A26B0BAFF00902FD1 /* QueueCell.m in Sources */,
 				8EC7A21426AF7CF300902FD1 /* FollowerRoomViewController.m in Sources */,
 				8EC7A21726AF7D0100902FD1 /* HostRoomViewController.m in Sources */,
 				8EC7A21126AAFC2800902FD1 /* SearchResultCell.m in Sources */,
