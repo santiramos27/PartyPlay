@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
+@import ParseLiveQuery;
 
 @interface AppDelegate ()
 
@@ -23,6 +24,9 @@
         configuration.clientKey = @"WaZjcXNKrrMU4cZYOaiR1HdvxC9CV5z4m10IhWte";
         configuration.server = @"https://parseapi.back4app.com";
     }];
+    PFLiveQueryClient *client = [[PFLiveQueryClient alloc] initWithServer:@"wss://partyplay.b4a.io" applicationId:@"OlNro9zsZF3pl4qjqy1iLond1Glvp0BZrnqkw0SO" clientKey:@"WaZjcXNKrrMU4cZYOaiR1HdvxC9CV5z4m10IhWte"];
+    
+    
 
     [Parse initializeWithConfiguration:config];
 

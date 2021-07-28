@@ -10,11 +10,19 @@
 #import "Track.h"
 #import "QueueCell.h"
 
+@import ParseLiveQuery;
+
 @interface FollowerRoomViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *sharedQueue;
+//@property (strong, nonatomic) NSMutableArray *sharedQueue;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+
+@property (nonatomic, strong) PFLiveQueryClient *client;
+@property (nonatomic, strong) PFQuery *query;
+@property (nonatomic, strong) PFLiveQuerySubscription *subscription;
 
 @end
 
@@ -24,8 +32,14 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", self.room.roomName];
-    self.sharedQueue = [Track repackTracks:self.room.sharedQueue];
+    //queue currently unpacked, this was done before creating room object
+    self.room.sharedQueue = [Track repackTracks:self.room.sharedQueue];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(reloadQueue) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 
     // Do any additional setup after loading the view.
 }
@@ -34,18 +48,38 @@
     return [self.room.sharedQueue count];
 }
 
+- (void)reloadQueue{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roomName == %@ AND roomCode == %@", self.room.roomName, self.room.roomCode];
+    PFQuery *query = [PFQuery queryWithClassName:@"Room" predicate:predicate];
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *rooms, NSError *error) {
+        if ([rooms count] != 0) {
+            self.room = rooms[0];
+            self.room.sharedQueue = [Track repackTracks:self.room.sharedQueue];
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     QueueCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"QueueCell" forIndexPath:indexPath];
+    Track *track = self.room.sharedQueue[indexPath.row];
     
-    Track *track = self.sharedQueue[indexPath.row];
+    cell.songIndex = [NSNumber numberWithInt:indexPath.row];
     cell.track = track;
     cell.room = self.room;
+    
     cell.trackNameLabel.text = track.songName;
     cell.artistNameLabel.text = track.artistName;
     cell.addedByLabel.text = track.addedBy;
     cell.upvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numUpvotes];
     cell.downvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numDownvotes];
+    
     return cell;
 }
 

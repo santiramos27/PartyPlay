@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Track *track;
 @property (strong, nonatomic) Room *room;
 
+@property (strong, nonatomic) NSNumber *songIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END

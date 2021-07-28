@@ -33,15 +33,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     QueueCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"QueueCell" forIndexPath:indexPath];
-    
     Track *track = self.sharedQueue[indexPath.row];
+    
+    cell.songIndex = [NSNumber numberWithInt:indexPath.row];
     cell.track = track;
     cell.room = self.room;
+    
     cell.trackNameLabel.text = track.songName;
     cell.artistNameLabel.text = track.artistName;
     cell.addedByLabel.text = track.addedBy;
     cell.upvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numUpvotes];
     cell.downvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numDownvotes];
+    
     return cell;
     
 }

@@ -8,6 +8,7 @@ target 'PartyPlay' do
   # Pods for PartyPlay
   pod 'Parse'
   pod 'AFNetworking'	
+  pod 'ParseLiveQuery' 
 
   target 'PartyPlayTests' do
     inherit! :search_paths

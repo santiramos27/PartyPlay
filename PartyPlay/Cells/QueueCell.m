@@ -7,6 +7,7 @@
 
 #import "QueueCell.h"
 #import "Parse/Parse.h"
+#import "Track.h"
 
 @implementation QueueCell
 
@@ -23,9 +24,11 @@
 
 - (IBAction)didTapUpvote:(id)sender {
     self.track.numUpvotes = [NSNumber numberWithInt:[self.track.numUpvotes intValue] + 1];
+    [self.room.sharedQueue replaceObjectAtIndex:[self.songIndex intValue] withObject:self.track];
+    self.room.sharedQueue = [Track unPackTracks:self.room.sharedQueue];
     [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            NSLog(@"Upvote sucess");
+            NSLog(@"Upvote success");
             [self refreshData];
         } else {
             NSLog(@"upvote failed");
@@ -35,10 +38,12 @@
 }
 
 - (IBAction)didTapDownvote:(id)sender {
-    self.track.numUpvotes = [NSNumber numberWithInt:[self.track.numUpvotes intValue] - 1];
+    self.track.numDownvotes = [NSNumber numberWithInt:[self.track.numDownvotes intValue] + 1];
+    [self.room.sharedQueue replaceObjectAtIndex:[self.songIndex intValue] withObject:self.track];
+    self.room.sharedQueue = [Track unPackTracks:self.room.sharedQueue];
     [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            NSLog(@"Downvote sucess");
+            NSLog(@"Downvote success");
             [self refreshData];
         } else {
             NSLog(@"Downvote failed");
