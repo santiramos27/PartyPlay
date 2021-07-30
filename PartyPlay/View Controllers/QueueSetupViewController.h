@@ -6,10 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Room.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QueueSetupViewController : UIViewController
+
+@property (strong, nonatomic) Room *room;
 
 @end
 

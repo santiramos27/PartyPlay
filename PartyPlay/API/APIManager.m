@@ -38,12 +38,9 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     self.configuration  = [[SPTConfiguration alloc] initWithClientID:SpotifyClientID redirectURL:[NSURL URLWithString:SpotifyRedirectURLString]];
     self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    self.configuration.playURI = @"spotify:track:20I6sIOMTCkB6w7ryavxtO";
+    self.configuration.playURI = @"spotify:track:79s5XnCN4TJKTVMSmOx8Ep";
     self.configuration.tokenSwapURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/token"];
     self.configuration.tokenRefreshURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/refresh_token"];
-    
-    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-    self.appRemote.delegate = self;
     
     return self;
 }
@@ -52,6 +49,14 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     SPTScope requestedScope = SPTAppRemoteControlScope;
     [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
     completion(true,nil);
+}
+
+- (void)playSong:(NSString *)songID{
+    self.configuration.playURI = songID;
+    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
+    self.appRemote.delegate = self;
+    self.appRemote.connectionParameters.accessToken = [self getToken];
+    [self.appRemote connect];
 }
 
 - (NSString *)getToken{
@@ -88,8 +93,6 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 
 - (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session{
     self.authToken = session.accessToken;
-    self.appRemote.connectionParameters.accessToken = session.accessToken;
-    [self.appRemote connect];
     NSLog(@"success: %@", session.accessToken);
 }
 

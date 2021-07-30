@@ -73,10 +73,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchResultCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
-    
     Track *track = self.results[indexPath.row];
-    NSLog(@"%@", track.artistName);
-    cell.sharedQueue = self.sharedQueue;
+    if(self.room){
+        cell.room = self.room;
+    }
+    else{
+        cell.setupQueue = self.sharedQueue;
+    }
     cell.track = track;
     cell.trackNameLabel.text = track.songName;
     cell.artistNameLabel.text = track.artistName;

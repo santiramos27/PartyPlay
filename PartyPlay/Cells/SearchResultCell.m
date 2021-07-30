@@ -23,8 +23,22 @@
 - (IBAction)didTapAdd:(id)sender {
     self.addToQueueButton.selected = true;
     self.track.addedBy = [[PFUser currentUser] username];
-    [self.sharedQueue addObject:self.track];
-    NSLog(@"track added");
+    if(self.room){
+        //if adding song to existing room queue
+        [self.room.sharedQueue addObject:self.track];
+        self.room.sharedQueue = [Track unPackTracks:self.room.sharedQueue];
+        [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                NSLog(@"Track added successfully");
+            } else {
+                NSLog(@"Error adding track");
+            }
+          }];
+    }
+    else{
+        //if adding song to setup queue prior to room creation
+        [self.setupQueue addObject:self.track];
+    }
 }
 
 

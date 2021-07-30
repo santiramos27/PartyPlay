@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)getSearchResults:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion;
 
+- (void)playSong:(NSString *)songID;
+
 - (NSString *)getToken;
 
 

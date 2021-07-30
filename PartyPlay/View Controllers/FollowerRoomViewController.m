@@ -9,6 +9,8 @@
 #import "Parse/Parse.h"
 #import "Track.h"
 #import "QueueCell.h"
+#import "QueueSetupViewController.h"
+#import "APIManager.h"
 
 @import ParseLiveQuery;
 
@@ -48,13 +50,16 @@
         NSLog(@"there has been a change to the queue");
         [self reloadQueue];
     }];
-
+    
     // Do any additional setup after loading the view.
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.room.sharedQueue count];
+- (IBAction)didTapBeginPlayback:(id)sender {
+    for(Track *track in self.room.sharedQueue){
+        [[APIManager shared] playSong:track.songID];
+    }
 }
+
 
 - (void)reloadQueue{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roomName == %@ AND roomCode == %@", self.room.roomName, self.room.roomCode];
@@ -71,6 +76,10 @@
         }
         [self.refreshControl endRefreshing];
     }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.room.sharedQueue count];
 }
 
 
@@ -91,14 +100,15 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    QueueSetupViewController *searchRoom = [segue destinationViewController];
+    searchRoom.room = self.room;
+    //pass personal profile to ComposeViewController to display profile picture
 }
-*/
+
 
 @end
