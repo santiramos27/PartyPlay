@@ -14,8 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *songURI;
 @property (strong, nonatomic) NSString *songName;
 @property (strong, nonatomic) NSString *artistName;
-@property (strong, nonatomic) NSNumber *numUpvotes;
-@property (strong, nonatomic) NSNumber *numDownvotes;
+@property (strong, nonatomic) NSNumber *numVotes;
 @property (strong, nonatomic) NSString *addedBy;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

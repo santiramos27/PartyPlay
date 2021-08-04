@@ -101,9 +101,8 @@
     
     cell.trackNameLabel.text = track.songName;
     cell.artistNameLabel.text = track.artistName;
-    cell.addedByLabel.text = track.addedBy;
-    cell.upvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numUpvotes];
-    cell.downvoteCountLabel.text = [NSString stringWithFormat:@"%@", track.numDownvotes];
+    cell.addedByLabel.text = [NSString stringWithFormat: @"Added by: %@", track.addedBy];
+    cell.voteLabel.text = [NSString stringWithFormat:@"%@", track.numVotes];
     
     return cell;
 }

@@ -21,11 +21,11 @@
     // Configure the view for the selected state
 }
 - (IBAction)didTapAdd:(id)sender {
-    self.addToQueueButton.selected = true;
+    self.addToQueueButton.selected = !self.addToQueueButton.selected ;
     self.track.addedBy = [[PFUser currentUser] username];
     if(self.room){
         //if adding song to existing room queue
-        [self.room.sharedQueue addObject:self.track];
+        self.addToQueueButton.selected ? [self.room.sharedQueue addObject:self.track]: [self.room.sharedQueue removeObject:self.track];
         self.room.sharedQueue = [Track JSONSerialize:self.room.sharedQueue];
         [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
@@ -37,7 +37,7 @@
     }
     else{
         //if adding song to setup queue prior to room creation
-        [self.setupQueue addObject:self.track];
+        self.addToQueueButton.selected ? [self.setupQueue addObject:self.track]:[self.setupQueue removeObject:self.track];
     }
 }
 

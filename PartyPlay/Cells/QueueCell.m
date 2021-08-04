@@ -23,7 +23,8 @@
 }
 
 - (IBAction)didTapUpvote:(id)sender {
-    self.track.numUpvotes = [NSNumber numberWithInt:[self.track.numUpvotes intValue] + 1];
+    self.upvoteButton.selected = !self.upvoteButton.selected;
+    self.track.numVotes = [NSNumber numberWithInt:self.upvoteButton.selected ? [self.track.numVotes intValue] + 1 : [self.track.numVotes intValue] - 1];
     [self.room.sharedQueue replaceObjectAtIndex:[self.songIndex intValue] withObject:self.track];
     self.room.sharedQueue = [Track JSONSerialize:self.room.sharedQueue];
     [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -38,7 +39,8 @@
 }
 
 - (IBAction)didTapDownvote:(id)sender {
-    self.track.numDownvotes = [NSNumber numberWithInt:[self.track.numDownvotes intValue] + 1];
+    self.downvoteButton.selected = !self.downvoteButton.selected;
+    self.track.numVotes = [NSNumber numberWithInt:self.downvoteButton.selected ? [self.track.numVotes intValue] - 1 : [self.track.numVotes intValue] + 1];
     [self.room.sharedQueue replaceObjectAtIndex:[self.songIndex intValue] withObject:self.track];
     self.room.sharedQueue = [Track JSONSerialize:self.room.sharedQueue];
     [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -52,8 +54,7 @@
 }
 
 - (void)updateViews{
-    self.upvoteCountLabel.text = [NSString stringWithFormat:@"%d",[self.track.numUpvotes intValue]];
-    self.downvoteCountLabel.text = [NSString stringWithFormat:@"%d",[self.track.numDownvotes intValue]];
+    self.voteLabel.text = [NSString stringWithFormat:@"%d",[self.track.numVotes intValue]];
 }
 
 @end

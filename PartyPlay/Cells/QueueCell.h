@@ -15,9 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *trackNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *upvoteButton;
-@property (weak, nonatomic) IBOutlet UILabel *upvoteCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *downvoteCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *downvoteButton;
+@property (weak, nonatomic) IBOutlet UILabel *voteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addedByLabel;
 
 @property (strong, nonatomic) Track *track;
