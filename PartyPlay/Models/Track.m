@@ -11,7 +11,7 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
-    self.songID = dictionary[@"id"];
+    self.songURI = dictionary[@"uri"];
     self.songName = dictionary[@"name"];
     
     //this gets the "main" artist from the list of people collaborating on the song.
@@ -33,20 +33,20 @@
     return tracks;
 }
 
-+ (NSMutableArray *)unPackTracks:(NSMutableArray *)queue{
++ (NSMutableArray *)JSONSerialize:(NSMutableArray *)queue{
     NSMutableArray *unpacked = [NSMutableArray array];
     for (Track *track in queue){
-        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songID, @"songID", track.songName, @"songName", track.artistName, @"artistName", track.numUpvotes, @"numUpvotes", track.numDownvotes, @"numDownvotes", track.addedBy, @"addedBy", nil];
+        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songURI, @"songURI", track.songName, @"songName", track.artistName, @"artistName", track.numUpvotes, @"numUpvotes", track.numDownvotes, @"numDownvotes", track.addedBy, @"addedBy", nil];
         [unpacked addObject:song];
     }
     return unpacked;
 }
 
-+ (NSMutableArray *)repackTracks:(NSMutableArray *)queue{
++ (NSMutableArray *)JSONDeserialize:(NSMutableArray *)queue{
     NSMutableArray *packed = [NSMutableArray array];
     for(NSDictionary *dict in queue){
         Track *track = [[Track alloc] init];
-        track.songID = dict[@"songID"];
+        track.songURI = dict[@"songURI"];
         track.songName = dict[@"songName"];
         track.artistName = dict[@"artistName"];
         track.numDownvotes = dict[@"numDownvotes"];

@@ -17,7 +17,7 @@
 		8E7785C5269FE76C006D786A /* PartyPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785C4269FE76C006D786A /* PartyPlayTests.m */; };
 		8E7785D0269FE76C006D786A /* PartyPlayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785CF269FE76C006D786A /* PartyPlayUITests.m */; };
 		8E7785E0269FE7A7006D786A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7785DF269FE7A7006D786A /* LoginViewController.m */; };
-		8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1E526A1465300902FD1 /* APIManager.m */; };
+		8EC6C15226BACD48000E41B2 /* SpotifyAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC6C15126BACD48000E41B2 /* SpotifyAPIManager.m */; };
 		8EC7A1EB26A211E400902FD1 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC7A1EA26A211E400902FD1 /* SpotifyiOS.xcframework */; };
 		8EC7A1EC26A211E400902FD1 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC7A1EA26A211E400902FD1 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7A1F526A694A500902FD1 /* AuthViewController.m */; };
@@ -91,8 +91,9 @@
 		8E7785DE269FE7A7006D786A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		8E7785DF269FE7A7006D786A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		8E7785F0269FF102006D786A /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "PartyPlay/ios-sdk-master/SpotifyiOS.framework"; sourceTree = "<group>"; };
-		8EC7A1E426A1465300902FD1 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
-		8EC7A1E526A1465300902FD1 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		8EC6C14B26BACB4A000E41B2 /* SpotifyAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotifyAPIManager.h; sourceTree = "<group>"; };
+		8EC6C14E26BACCAF000E41B2 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		8EC6C15126BACD48000E41B2 /* SpotifyAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyAPIManager.m; sourceTree = "<group>"; };
 		8EC7A1EA26A211E400902FD1 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "PartyPlay/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
 		8EC7A1F426A694A500902FD1 /* AuthViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		8EC7A1F526A694A500902FD1 /* AuthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
@@ -227,22 +228,9 @@
 		8E7785DD269FE798006D786A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8E7785DE269FE7A7006D786A /* LoginViewController.h */,
-				8E7785DF269FE7A7006D786A /* LoginViewController.m */,
-				8EC7A1F426A694A500902FD1 /* AuthViewController.h */,
-				8EC7A1F526A694A500902FD1 /* AuthViewController.m */,
-				8EC7A20026A85F6800902FD1 /* CreateRoomViewController.h */,
-				8EC7A20126A85F6800902FD1 /* CreateRoomViewController.m */,
-				8EC7A20626A8B34D00902FD1 /* JoinRoomViewController.h */,
-				8EC7A20726A8B34D00902FD1 /* JoinRoomViewController.m */,
-				8EC7A20926A8D0BC00902FD1 /* QueueSetupViewController.h */,
-				8EC7A20A26A8D0BC00902FD1 /* QueueSetupViewController.m */,
-				8EC7A20C26AA16AD00902FD1 /* HomeViewController.h */,
-				8EC7A20D26AA16AD00902FD1 /* HomeViewController.m */,
-				8EC7A21226AF7CF300902FD1 /* FollowerRoomViewController.h */,
-				8EC7A21326AF7CF300902FD1 /* FollowerRoomViewController.m */,
-				8EC7A21526AF7D0100902FD1 /* HostRoomViewController.h */,
-				8EC7A21626AF7D0100902FD1 /* HostRoomViewController.m */,
+				8EC6C15626BAD046000E41B2 /* SharedScreens */,
+				8EC6C15526BAD002000E41B2 /* FollowerScreens */,
+				8EC6C15426BACFCE000E41B2 /* HostScreens */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -259,11 +247,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8EC6C15426BACFCE000E41B2 /* HostScreens */ = {
+			isa = PBXGroup;
+			children = (
+				8EC7A20026A85F6800902FD1 /* CreateRoomViewController.h */,
+				8EC7A20126A85F6800902FD1 /* CreateRoomViewController.m */,
+				8EC7A20926A8D0BC00902FD1 /* QueueSetupViewController.h */,
+				8EC7A20A26A8D0BC00902FD1 /* QueueSetupViewController.m */,
+				8EC7A21526AF7D0100902FD1 /* HostRoomViewController.h */,
+				8EC7A21626AF7D0100902FD1 /* HostRoomViewController.m */,
+			);
+			path = HostScreens;
+			sourceTree = "<group>";
+		};
+		8EC6C15526BAD002000E41B2 /* FollowerScreens */ = {
+			isa = PBXGroup;
+			children = (
+				8EC7A20626A8B34D00902FD1 /* JoinRoomViewController.h */,
+				8EC7A20726A8B34D00902FD1 /* JoinRoomViewController.m */,
+				8EC7A21226AF7CF300902FD1 /* FollowerRoomViewController.h */,
+				8EC7A21326AF7CF300902FD1 /* FollowerRoomViewController.m */,
+			);
+			path = FollowerScreens;
+			sourceTree = "<group>";
+		};
+		8EC6C15626BAD046000E41B2 /* SharedScreens */ = {
+			isa = PBXGroup;
+			children = (
+				8E7785DE269FE7A7006D786A /* LoginViewController.h */,
+				8E7785DF269FE7A7006D786A /* LoginViewController.m */,
+				8EC7A1F426A694A500902FD1 /* AuthViewController.h */,
+				8EC7A1F526A694A500902FD1 /* AuthViewController.m */,
+				8EC7A20C26AA16AD00902FD1 /* HomeViewController.h */,
+				8EC7A20D26AA16AD00902FD1 /* HomeViewController.m */,
+			);
+			path = SharedScreens;
+			sourceTree = "<group>";
+		};
 		8EC7A1E326A1461D00902FD1 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				8EC7A1E426A1465300902FD1 /* APIManager.h */,
-				8EC7A1E526A1465300902FD1 /* APIManager.m */,
+				8EC6C14B26BACB4A000E41B2 /* SpotifyAPIManager.h */,
+				8EC6C15126BACD48000E41B2 /* SpotifyAPIManager.m */,
+				8EC6C14E26BACCAF000E41B2 /* APIManager.h */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -532,13 +558,13 @@
 				8E7785E0269FE7A7006D786A /* LoginViewController.m in Sources */,
 				8EC7A20826A8B34D00902FD1 /* JoinRoomViewController.m in Sources */,
 				8E7785AA269FE76A006D786A /* AppDelegate.m in Sources */,
+				8EC6C15226BACD48000E41B2 /* SpotifyAPIManager.m in Sources */,
 				8E7785BB269FE76C006D786A /* main.m in Sources */,
 				8EC7A20226A85F6800902FD1 /* CreateRoomViewController.m in Sources */,
 				8E7785AD269FE76A006D786A /* SceneDelegate.m in Sources */,
 				8EC7A1F626A694A500902FD1 /* AuthViewController.m in Sources */,
 				8EC7A1FF26A7642900902FD1 /* Room.m in Sources */,
 				8EC7A20B26A8D0BC00902FD1 /* QueueSetupViewController.m in Sources */,
-				8EC7A1E626A1465300902FD1 /* APIManager.m in Sources */,
 				8EC7A21A26B0BAFF00902FD1 /* QueueCell.m in Sources */,
 				8EC7A21426AF7CF300902FD1 /* FollowerRoomViewController.m in Sources */,
 				8EC7A21726AF7D0100902FD1 /* HostRoomViewController.m in Sources */,

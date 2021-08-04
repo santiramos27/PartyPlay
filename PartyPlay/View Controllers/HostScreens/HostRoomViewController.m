@@ -23,7 +23,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", self.room.roomName];
-    self.sharedQueue = [Track repackTracks:self.room.sharedQueue];
+    self.sharedQueue = [Track JSONDeserialize:self.room.sharedQueue];
     // Do any additional setup after loading the view.
 }
 

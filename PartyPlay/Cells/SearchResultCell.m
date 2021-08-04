@@ -26,7 +26,7 @@
     if(self.room){
         //if adding song to existing room queue
         [self.room.sharedQueue addObject:self.track];
-        self.room.sharedQueue = [Track unPackTracks:self.room.sharedQueue];
+        self.room.sharedQueue = [Track JSONSerialize:self.room.sharedQueue];
         [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 NSLog(@"Track added successfully");

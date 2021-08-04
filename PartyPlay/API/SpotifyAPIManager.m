@@ -1,20 +1,21 @@
 //
-//  APIManager.m
+//  SpotifyAPIManager.m
 //  PartyPlay
 //
-//  Created by Santino L Ramos on 7/16/21.
+//  Created by Santino L Ramos on 8/4/21.
 //
 
-#import "APIManager.h"
+#import "SpotifyAPIManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "AFHTTPSessionManager.h"
+#import "APIManager.h"
 #import "Track.h"
 
 static NSString * const SpotifyClientID = @"a37725494d5446f389585c9ac6f9f848";
 static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://spotify-login-callback";
 
 
-@interface APIManager()<SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
+@interface SpotifyAPIManager()<APIManager, SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate>
 
 @property (nonatomic, strong) SPTSessionManager *sessionManager;
 @property (nonatomic, strong) SPTConfiguration *configuration;
@@ -23,10 +24,10 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 
 @end
 
-@implementation APIManager
+@implementation SpotifyAPIManager
 
 + (instancetype)shared {
-    static APIManager *sharedManager = nil;
+    static SpotifyAPIManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
@@ -36,38 +37,54 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
 
 - (instancetype)init {
     self.configuration  = [[SPTConfiguration alloc] initWithClientID:SpotifyClientID redirectURL:[NSURL URLWithString:SpotifyRedirectURLString]];
-    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
     
-    self.configuration.playURI = @"spotify:track:79s5XnCN4TJKTVMSmOx8Ep";
     self.configuration.tokenSwapURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/token"];
     self.configuration.tokenRefreshURL = [NSURL URLWithString:@"https://partyplay1.herokuapp.com/api/refresh_token"];
+    self.configuration.playURI = @"spotify:track:20I6sIOMTCkB6w7ryavxtO";
+    
+    self.sessionManager = [[SPTSessionManager alloc] initWithConfiguration:self.configuration delegate:self];
+    
+    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
+    self.appRemote.delegate = self;
     
     return self;
 }
 
-- (void)spotifyAuth:(void(^)(BOOL success, NSError * error))completion{
+- (void)authWithAPI:(void(^)(BOOL success, NSError * error))completion{
     SPTScope requestedScope = SPTAppRemoteControlScope;
     [self.sessionManager initiateSessionWithScope:requestedScope options:SPTDefaultAuthorizationOption];
     completion(true,nil);
 }
 
-- (void)playSong:(NSString *)songID{
-    self.configuration.playURI = songID;
-    self.appRemote = [[SPTAppRemote alloc] initWithConfiguration:self.configuration logLevel:SPTAppRemoteLogLevelDebug];
-    self.appRemote.delegate = self;
-    self.appRemote.connectionParameters.accessToken = [self getToken];
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    [self.sessionManager application:app openURL:url options:options];
+    return true;
+}
+
+- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session{
+    self.authToken = session.accessToken;
+    self.appRemote.connectionParameters.accessToken = session.accessToken;
     [self.appRemote connect];
+    NSLog(@"success: %@", session.accessToken);
+}
+
+- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"fail: %@", error);
+}
+
+- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session{
+    NSLog(@"renewed: %@", session);
 }
 
 - (NSString *)getToken{
     return self.authToken;
 }
 
-- (void)getSearchResults:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion {
+- (void)searchWithAPI:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion{
     NSString *encodedQuery = [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *URLString = [NSString stringWithFormat:@"https://api.spotify.com/v1/search?q=%@&type=track", encodedQuery];
     
-    NSString *token = [NSString stringWithFormat:@"Bearer %@",[[APIManager shared] getToken]];
+    NSString *token = [NSString stringWithFormat:@"Bearer %@",[[SpotifyAPIManager shared] getToken]];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URLString]];
     [request setValue:token forHTTPHeaderField:@"Authorization"];
@@ -90,24 +107,6 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
     [task resume];
 }
 
-
-- (void)sessionManager:(SPTSessionManager *)manager didInitiateSession:(SPTSession *)session{
-    self.authToken = session.accessToken;
-    NSLog(@"success: %@", session.accessToken);
-}
-
-- (void)sessionManager:(SPTSessionManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"fail: %@", error);
-}
-
-- (void)sessionManager:(SPTSessionManager *)manager didRenewSession:(SPTSession *)session{
-    NSLog(@"renewed: %@", session);
-}
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    [self.sessionManager application:app openURL:url options:options];
-    return true;
-}
 
 - (void)appRemoteDidEstablishConnection:(SPTAppRemote *)appRemote{
     // Connection was successful, you can begin issuing commands
@@ -142,4 +141,5 @@ static NSString * const SpotifyRedirectURLString = @"spotify-ios-quick-start://s
         [self.appRemote connect];
     }
 }
+
 @end

@@ -7,7 +7,7 @@
 
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
-#import "APIManager.h"
+#import "SpotifyAPIManager.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;

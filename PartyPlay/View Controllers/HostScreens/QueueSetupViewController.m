@@ -7,7 +7,7 @@
 
 #import "QueueSetupViewController.h"
 #import "AFNetworking.h"
-#import "APIManager.h"
+#import "SpotifyAPIManager.h"
 #import "SceneDelegate.h"
 #import "HomeViewController.h"
 #import "Track.h"
@@ -56,7 +56,7 @@
 }
 
 - (void)fetchSearchResults:(NSString *)query {
-    [[APIManager shared] getSearchResults:query withCompletion:^(NSMutableArray *results, NSError *error) {
+    [[SpotifyAPIManager shared] searchWithAPI:query withCompletion:^(NSMutableArray *results, NSError *error) {
         if (results) {
             self.results = results;
             [self.tableView reloadData];

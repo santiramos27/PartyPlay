@@ -6,7 +6,7 @@
 //
 
 #import "AuthViewController.h"
-#import "APIManager.h"
+#import "SpotifyAPIManager.h"
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
@@ -24,7 +24,7 @@
 }
 
 - (IBAction)didTapConnect:(id)sender {
-    [[APIManager shared] spotifyAuth:^(BOOL success, NSError *error) {
+    [[SpotifyAPIManager shared] authWithAPI:^(BOOL success, NSError *error) {
         if (success) {
             [self performSegueWithIdentifier:@"authSegue" sender:nil];
         }
@@ -37,7 +37,9 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     myDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
+        if(error){
+            NSLog(@"Logout Failed");
+        }
     }];
 }
 

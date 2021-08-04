@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Track : NSObject
 
-@property (strong, nonatomic) NSString *songID;
+@property (strong, nonatomic) NSString *songURI;
 @property (strong, nonatomic) NSString *songName;
 @property (strong, nonatomic) NSString *artistName;
 @property (strong, nonatomic) NSNumber *numUpvotes;
@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tracksWithArray:(NSArray *)dictionaries;
-+ (NSMutableArray *)unPackTracks:(NSMutableArray *)queue;
-+ (NSMutableArray *)repackTracks:(NSMutableArray *)queue;
++ (NSMutableArray *)JSONSerialize:(NSMutableArray *)queue;
++ (NSMutableArray *)JSONDeserialize:(NSMutableArray *)queue;
 
 @end
 

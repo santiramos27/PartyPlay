@@ -10,7 +10,7 @@
 #import "Track.h"
 #import "QueueCell.h"
 #import "QueueSetupViewController.h"
-#import "APIManager.h"
+#import "SpotifyAPIManager.h"
 
 @import ParseLiveQuery;
 
@@ -33,35 +33,43 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.room.sharedQueue = [Track JSONDeserialize:self.room.sharedQueue];
+    
+    [self refreshControlSetup];
     
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", self.room.roomName];
-    //queue currently unpacked, this was done before creating room object
-    self.room.sharedQueue = [Track repackTracks:self.room.sharedQueue];
     
+    [self liveQuerySetup];
+    
+}
+
+- (void)refreshControlSetup{
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(reloadQueue) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchQueue) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    
+}
+
+- (void)liveQuerySetup{
     self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:@"wss://partyplay.b4a.io" applicationId:@"OlNro9zsZF3pl4qjqy1iLond1Glvp0BZrnqkw0SO" clientKey:@"WaZjcXNKrrMU4cZYOaiR1HdvxC9CV5z4m10IhWte"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roomName == %@ AND roomCode == %@", self.room.roomName, self.room.roomCode];
     self.query = [PFQuery queryWithClassName:@"Room" predicate:predicate];
     self.subscription = [self.liveQueryClient subscribeToQuery:self.query];
     [self.subscription addUpdateHandler:^(PFQuery<PFObject *> * _Nonnull query, PFObject * _Nonnull object) {
-        NSLog(@"there has been a change to the queue");
-        [self reloadQueue];
+        NSLog(@"there has been a change to the room");
+        [self fetchQueue];
     }];
     
-    // Do any additional setup after loading the view.
 }
-
 - (IBAction)didTapBeginPlayback:(id)sender {
-    for(Track *track in self.room.sharedQueue){
-        [[APIManager shared] playSong:track.songID];
-    }
+    Track *curr = self.room.sharedQueue[0];
+    //[[SpotifyAPIManager shared] playSong:curr.songURI];
+//    for(Track *track in self.room.sharedQueue){
+//        [[APIManager shared] playSong:track.songURI];
+//    }
 }
 
 
-- (void)reloadQueue{
+- (void)fetchQueue{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roomName == %@ AND roomCode == %@", self.room.roomName, self.room.roomCode];
     PFQuery *query = [PFQuery queryWithClassName:@"Room" predicate:predicate];
 
@@ -69,7 +77,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *rooms, NSError *error) {
         if ([rooms count] != 0) {
             self.room = rooms[0];
-            self.room.sharedQueue = [Track repackTracks:self.room.sharedQueue];
+            self.room.sharedQueue = [Track JSONDeserialize:self.room.sharedQueue];
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
