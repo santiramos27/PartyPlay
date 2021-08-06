@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,6 +61,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ywl-Qc-t2Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="vAw-Qw-SgL" appends="YES" id="uiF-WF-EFZ"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="bbg-ZH-3Yh" id="Sad-EA-d4e"/>
@@ -68,13 +73,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cad-ja-pd4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="vAw-Qw-SgL">
+                    <connections>
+                        <action selector="onTap:" destination="Zc4-Gt-GCY" id="Xfc-23-yxa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1252" y="112"/>
         </scene>
-        <!--Auth View Controller-->
+        <!--AuthenticatedViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="AuthViewController" sceneMemberID="viewController">
+                <viewController title="AuthenticatedViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="AuthViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="442" y="112"/>
         </scene>
-        <!--Home View Controller-->
+        <!--HomeViewController-->
         <scene sceneID="TLJ-wK-9E0">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="6do-IW-0B7" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController title="HomeViewController" modalPresentationStyle="fullScreen" id="6do-IW-0B7" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XqI-lg-1J3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -429,20 +439,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtH-aa-zSn">
-                                                    <rect key="frame" x="331" y="6" width="50" height="30"/>
-                                                    <state key="normal" title="Upvote"/>
-                                                    <connections>
-                                                        <action selector="didTapUpvote:" destination="N0N-GM-q2Y" eventType="touchUpInside" id="t8s-Tc-sp6"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nec-dD-YQK">
-                                                    <rect key="frame" x="322" y="56" width="69" height="30"/>
-                                                    <state key="normal" title="Downvote"/>
-                                                    <connections>
-                                                        <action selector="didTapDownvote:" destination="N0N-GM-q2Y" eventType="touchUpInside" id="IdI-eV-MhG"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXI-Kk-HRj">
                                                     <rect key="frame" x="351" y="34" width="11" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -457,16 +453,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nec-dD-YQK" secondAttribute="trailing" constant="3" id="70r-DB-k2s"/>
-                                                <constraint firstAttribute="trailing" secondItem="LtH-aa-zSn" secondAttribute="trailing" constant="33" id="AP8-wq-pGc"/>
                                                 <constraint firstItem="k4Z-hJ-iV3" firstAttribute="leading" secondItem="UPT-lS-A07" secondAttribute="leadingMargin" id="Bhc-Pq-xTc"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XLW-2r-omg" secondAttribute="bottom" constant="15" id="OAO-HW-7ID"/>
-                                                <constraint firstItem="LtH-aa-zSn" firstAttribute="top" secondItem="UPT-lS-A07" secondAttribute="top" constant="6" id="Z8U-pi-MEU"/>
                                                 <constraint firstItem="bIG-4X-xPN" firstAttribute="leading" secondItem="UPT-lS-A07" secondAttribute="leadingMargin" id="dcG-Xq-mDe"/>
                                                 <constraint firstItem="XLW-2r-omg" firstAttribute="leading" secondItem="UPT-lS-A07" secondAttribute="leadingMargin" id="jaY-aS-BaG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hXI-Kk-HRj" secondAttribute="trailing" constant="32" id="n6z-TI-hEj"/>
                                                 <constraint firstItem="XLW-2r-omg" firstAttribute="top" secondItem="k4Z-hJ-iV3" secondAttribute="bottom" constant="8.5" id="rU3-vg-uvl"/>
-                                                <constraint firstItem="nec-dD-YQK" firstAttribute="top" secondItem="hXI-Kk-HRj" secondAttribute="bottom" constant="1" id="rco-b9-OCW"/>
                                                 <constraint firstItem="hXI-Kk-HRj" firstAttribute="top" secondItem="UPT-lS-A07" secondAttribute="topMargin" constant="23" id="sST-kI-34X"/>
                                                 <constraint firstItem="k4Z-hJ-iV3" firstAttribute="top" secondItem="bIG-4X-xPN" secondAttribute="bottom" constant="8.5" id="sZw-bg-07s"/>
                                                 <constraint firstItem="bIG-4X-xPN" firstAttribute="top" secondItem="UPT-lS-A07" secondAttribute="topMargin" id="tOa-f1-ncP"/>
@@ -475,20 +467,31 @@
                                         <connections>
                                             <outlet property="addedByLabel" destination="XLW-2r-omg" id="9kw-SS-8Zn"/>
                                             <outlet property="artistNameLabel" destination="k4Z-hJ-iV3" id="MgX-2s-JAh"/>
-                                            <outlet property="downvoteButton" destination="nec-dD-YQK" id="GED-ik-1tF"/>
                                             <outlet property="trackNameLabel" destination="bIG-4X-xPN" id="dVp-ik-QRB"/>
-                                            <outlet property="upvoteButton" destination="LtH-aa-zSn" id="sFt-4v-IPz"/>
                                             <outlet property="voteLabel" destination="hXI-Kk-HRj" id="av8-1L-Bjy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNq-IR-fqf">
+                                <rect key="frame" x="284" y="136" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Begin Playback"/>
+                                <connections>
+                                    <action selector="didTapBeginPlayback:" destination="616-kU-Lfe" eventType="touchUpInside" id="C9a-uA-3LW"/>
+                                    <action selector="didTapBeginPlayback:" destination="zcZ-pr-wV6" eventType="touchUpInside" id="Orf-Ig-ge2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NbQ-Rg-duz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="PVe-G6-s6q">
-                        <barButtonItem key="rightBarButtonItem" title="Now Playing" id="mtE-m2-Dd1"/>
+                        <barButtonItem key="rightBarButtonItem" title="Now Playing" id="mtE-m2-Dd1">
+                            <connections>
+                                <segue destination="OpZ-nP-VRR" kind="show" id="eh8-lr-vaE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YVj-Ta-ePo" id="bFJ-Q5-uYs"/>
@@ -498,6 +501,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6p-6k-LB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6504.347826086957" y="-12.723214285714285"/>
+        </scene>
+        <!--Now Playing View Controller-->
+        <scene sceneID="Rb5-6H-fzV">
+            <objects>
+                <viewController id="OpZ-nP-VRR" customClass="NowPlayingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B2h-Qm-DsU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-Zp-sXN">
+                                <rect key="frame" x="20" y="208" width="374" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJt-U4-tzR">
+                                <rect key="frame" x="20" y="704" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odl-td-Qy0">
+                                <rect key="frame" x="20" y="640" width="99" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Veb-w4-mIU">
+                                <rect key="frame" x="190" y="745" width="34" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="play.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <state key="selected">
+                                    <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapPlayPause:" destination="OpZ-nP-VRR" eventType="touchUpInside" id="0za-e9-grh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXP-We-rut">
+                                <rect key="frame" x="114" y="771" width="35" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="backward.end.alt" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapBackwards:" destination="OpZ-nP-VRR" eventType="touchUpInside" id="QgN-og-Xwt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfI-1a-0yN">
+                                <rect key="frame" x="304" y="771" width="35" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="forward.end.alt" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapForwards:" destination="OpZ-nP-VRR" eventType="touchUpInside" id="Ysh-BS-QKG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room Name: Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLa-Eh-XIi">
+                                <rect key="frame" x="134" y="97" width="147" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Host: Jeff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBN-rR-29S">
+                                <rect key="frame" x="165" y="126" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="l1w-tQ-5oQ"/>
+                        <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MjN-O3-b6m"/>
+                    <connections>
+                        <outlet property="albumArtImage" destination="Ta6-Zp-sXN" id="vRP-iu-SqB"/>
+                        <outlet property="artistLabel" destination="CJt-U4-tzR" id="CLf-if-li3"/>
+                        <outlet property="hostNameLabel" destination="sBN-rR-29S" id="lG9-Pb-93X"/>
+                        <outlet property="playPauseButton" destination="Veb-w4-mIU" id="Dvj-hE-VQs"/>
+                        <outlet property="roomNameLabel" destination="CLa-Eh-XIi" id="QUP-Ue-GCf"/>
+                        <outlet property="songTitleLabel" destination="odl-td-Qy0" id="E76-AF-8Mp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTf-AM-EGT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7660.8695652173919" y="-13.392857142857142"/>
         </scene>
         <!--Shared Room-->
         <scene sceneID="dhi-3h-Bpk">
@@ -592,14 +687,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qir-nZ-jCz">
-                                <rect key="frame" x="289" y="123" width="105" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Begin Playback"/>
-                                <connections>
-                                    <action selector="didTapBeginPlayback:" destination="zcZ-pr-wV6" eventType="touchUpInside" id="NIj-7M-Fvs"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ciz-d8-KGN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -746,6 +833,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backward.end.alt" catalog="system" width="128" height="71"/>
+        <image name="forward.end.alt" catalog="system" width="128" height="71"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
+        <image name="play.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -16,27 +16,29 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.spotify.iOS-SDK-Quick-Start</string>
+			<string>com.elsantinoramos.PartyPlay</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>spotify-ios-quick-start</string>
+				<string>partyplay</string>
 			</array>
 		</dict>
 	</array>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>spotify</string>
 	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>spotify.com</key>
@@ -47,8 +49,6 @@
 				<true/>
 			</dict>
 		</dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
 	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

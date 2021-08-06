@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol APIManager <NSObject>
 
-- (void)authWithAPI:(void(^)(BOOL success, NSError * error))completion;
+- (void)authWithAPI;
 
 - (void)searchWithAPI:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion;
 

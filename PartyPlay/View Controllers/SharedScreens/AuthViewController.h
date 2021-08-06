@@ -6,10 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SpotifyiOS/SpotifyiOS.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AuthViewController : UIViewController
+
+@property (nonatomic) SPTSessionManager *sessionManager;
 
 @end
 

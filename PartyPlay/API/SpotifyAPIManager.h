@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <SpotifyIOS/SpotifyiOS.h>
+#import "Track.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,14 +15,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)shared;
 
-- (void)authWithAPI:(void(^)(BOOL success, NSError * error))completion;
+- (void)authWithAPI;
 
 - (void)searchWithAPI:(NSString *)query withCompletion:(void(^)(NSMutableArray *results, NSError *error))completion;
 
-//- (void)playSong:(NSString *)songID;
+- (void)playQueue:(NSString *)frontSong;
+
+- (void)startPlayback;
+
+- (void)pausePlayback;
+
+- (void)skipNext;
+
+- (void)skipPrevious;
+
+- (void)playTrack:(Track *)track;
+
+- (void)enqueueTrack:(Track *)track :(void(^)(bool success))completion;
+
+- (void)getNowPlayingTrack:(void(^)(NSString *trackName))completion;
+
+- (void)getNowPlayingArtist:(void(^)(NSString *ArtistName))completion;
 
 - (NSString *)getToken;
 
+- (SPTSessionManager *)getSessionManager;
+    
 @end
 
 NS_ASSUME_NONNULL_END

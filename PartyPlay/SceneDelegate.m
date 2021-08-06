@@ -7,6 +7,9 @@
 
 #import "SceneDelegate.h"
 #import "Parse/Parse.h"
+#import "SpotifyAPIManager.h"
+#import "AuthViewController.h"
+
 
 @interface SceneDelegate ()
 
@@ -24,6 +27,7 @@
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
         }
 }
+
 
 
 - (void)sceneDidDisconnect:(UIScene *)scene {
@@ -56,6 +60,16 @@
     // Called as the scene transitions from the foreground to the background.
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
+}
+
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts{
+    UIOpenURLContext *context = [URLContexts allObjects][0];
+    if(context.URL){
+        NSDictionary *options = @{};
+        SpotifyAPIManager *manager = [SpotifyAPIManager shared];
+        SPTSessionManager *sessionManager = [manager getSessionManager];
+        [sessionManager application:[UIApplication sharedApplication] openURL:context.URL options:options];
+    }
 }
 
 

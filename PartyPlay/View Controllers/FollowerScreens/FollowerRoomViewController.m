@@ -60,14 +60,6 @@
     }];
     
 }
-- (IBAction)didTapBeginPlayback:(id)sender {
-    Track *curr = self.room.sharedQueue[0];
-    //[[SpotifyAPIManager shared] playSong:curr.songURI];
-//    for(Track *track in self.room.sharedQueue){
-//        [[APIManager shared] playSong:track.songURI];
-//    }
-}
-
 
 - (void)fetchQueue{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"roomName == %@ AND roomCode == %@", self.room.roomName, self.room.roomCode];

@@ -17,20 +17,20 @@
 
 @implementation AuthViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"spotify:"]];
+    
+    //[[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"spotify:"]];
     // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapConnect:(id)sender {
-    [[SpotifyAPIManager shared] authWithAPI:^(BOOL success, NSError *error) {
-        if (success) {
-            [self performSegueWithIdentifier:@"authSegue" sender:nil];
-        }
-    }];
-    
+    [[SpotifyAPIManager shared] authWithAPI];
+    [self performSegueWithIdentifier:@"authSegue" sender:nil];
 }
+
+
 - (IBAction)didTapLogout:(id)sender {
     SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

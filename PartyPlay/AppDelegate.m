@@ -7,9 +7,12 @@
 
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
+#import "SpotifyAPIManager.h"
+
 @import ParseLiveQuery;
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -18,6 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self parseInit];
+
+    return YES;
+}
+
+- (void)parseInit{
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 
         configuration.applicationId = @"OlNro9zsZF3pl4qjqy1iLond1Glvp0BZrnqkw0SO";
@@ -26,8 +35,7 @@
     }];
     
     [Parse initializeWithConfiguration:config];
-
-    return YES;
+    
 }
 
 
