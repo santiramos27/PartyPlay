@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)pausePlayback;
 
-- (void)skipNext;
+- (void)skipNext:(void(^)(bool success))completion;
 
 - (void)skipPrevious;
 
@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getNowPlayingTrack:(void(^)(NSString *trackName))completion;
 
 - (void)getNowPlayingArtist:(void(^)(NSString *ArtistName))completion;
+
+- (void)getAlbumArt:(void(^)(UIImage *AlbumArt))completion;
 
 - (NSString *)getToken;
 

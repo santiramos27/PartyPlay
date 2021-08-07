@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.addToQueueButton.layer.cornerRadius = 12.0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,7 +22,10 @@
     // Configure the view for the selected state
 }
 - (IBAction)didTapAdd:(id)sender {
-    self.addToQueueButton.selected = !self.addToQueueButton.selected ;
+    //switch button state depending on 1st or 2nd click
+    self.addToQueueButton.selected = !self.addToQueueButton.selected;
+    //self.addToQueueButton.selected = ![self.track.added boolValue];
+    //self.track.added = [NSNumber numberWithInt: self.addToQueueButton.selected ? 1 : 0];
     self.track.addedBy = [[PFUser currentUser] username];
     if(self.room){
         //if adding song to existing room queue
@@ -30,6 +34,7 @@
         [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 NSLog(@"Track added successfully");
+                self.room.sharedQueue = [Track JSONDeserialize:self.room.sharedQueue];
             } else {
                 NSLog(@"Error adding track");
             }

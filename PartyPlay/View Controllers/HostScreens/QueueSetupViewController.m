@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSArray *results;
 @property (nonatomic, strong) NSMutableArray *sharedQueue;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
@@ -31,7 +32,11 @@
     self.tableView.dataSource = self;
     NSMutableArray *shared = [NSMutableArray array];
     self.sharedQueue = shared;
+    self.searchButton.layer.cornerRadius = 12.0; 
     // Do any additional setup after loading the view.
+}
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:true];
 }
 
 - (IBAction)didTapCancel:(id)sender {

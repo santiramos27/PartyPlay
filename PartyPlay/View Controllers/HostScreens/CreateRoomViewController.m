@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *roomNameField;
 @property (weak, nonatomic) IBOutlet UITextField *roomCodeField;
 @property (strong, nonatomic) Room *room;
+@property (weak, nonatomic) IBOutlet UIButton *createRoomButton;
 
 @end
 
@@ -22,7 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.createRoomButton.layer.cornerRadius = 12.0;
     // Do any additional setup after loading the view.
+}
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:true];
 }
 
 - (IBAction)didTapCreate:(id)sender {

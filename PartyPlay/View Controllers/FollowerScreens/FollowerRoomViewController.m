@@ -42,6 +42,9 @@
     [self liveQuerySetup];
     
 }
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:true];
+}
 
 - (void)refreshControlSetup{
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -84,6 +87,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSSortDescriptor *votes = [NSSortDescriptor sortDescriptorWithKey:@"numVotes" ascending:NO];
+    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:votes];
+    NSMutableArray *sortedQueue = (NSMutableArray*)[self.room.sharedQueue sortedArrayUsingDescriptors:sortDescriptors];
+    
+    self.room.sharedQueue = [NSMutableArray arrayWithArray:sortedQueue];
+    
     QueueCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"QueueCell" forIndexPath:indexPath];
     Track *track = self.room.sharedQueue[indexPath.row];
     

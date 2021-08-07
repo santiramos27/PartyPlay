@@ -20,6 +20,7 @@
 @property (nonatomic, strong) PFLiveQueryClient *liveQueryClient;
 @property (nonatomic, strong) PFQuery *query;
 @property (nonatomic, strong) PFLiveQuerySubscription *subscription;
+@property (weak, nonatomic) IBOutlet UIButton *beginPlaybackButton;
 
 
 @end
@@ -30,6 +31,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.beginPlaybackButton.layer.cornerRadius = 12.0;
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome to %@", self.room.roomName];
     self.room.sharedQueue = [Track JSONDeserialize:self.room.sharedQueue];
     
@@ -94,6 +96,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSSortDescriptor *votes = [NSSortDescriptor sortDescriptorWithKey:@"numVotes" ascending:NO];
+    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:votes];
+    NSMutableArray *sortedQueue = (NSMutableArray*)[self.room.sharedQueue sortedArrayUsingDescriptors:sortDescriptors];
+    
+    self.room.sharedQueue = [NSMutableArray arrayWithArray:sortedQueue];
+    
+    [NSSortDescriptor sortDescriptorWithKey:@"numVotes" ascending:YES];
     QueueCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"QueueCell" forIndexPath:indexPath];
     Track *track = self.room.sharedQueue[indexPath.row];
     

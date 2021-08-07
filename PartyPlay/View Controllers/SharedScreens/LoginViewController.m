@@ -12,6 +12,9 @@
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
+@property (weak, nonatomic) IBOutlet UIButton *logInButton;
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
 
 @end
 
@@ -19,6 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.signInButton.layer.cornerRadius = 12.0;
+    self.logInButton.layer.cornerRadius = 12.0;
+    self.logoView.layer.masksToBounds = true;
+    self.logoView.layer.cornerRadius = self.logoView.bounds.size.width / 2;
     // Do any additional setup after loading the view.
 }
 - (IBAction)onTap:(id)sender {

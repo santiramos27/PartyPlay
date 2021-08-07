@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *artistName;
 @property (strong, nonatomic) NSNumber *numVotes;
 @property (strong, nonatomic) NSString *addedBy;
+@property (strong, nonatomic) NSNumber *added;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tracksWithArray:(NSArray *)dictionaries;

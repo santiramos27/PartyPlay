@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "445-4459925_apple-music-listen-listen-on-apple-podcasts-badge.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

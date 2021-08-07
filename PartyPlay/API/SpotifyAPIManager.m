@@ -17,7 +17,7 @@ static NSString * const SpotifyClientID = @"a37725494d5446f389585c9ac6f9f848";
 static NSString * const SpotifyRedirectURLString = @"partyplay://spotify-login-callback";
 
 
-@interface SpotifyAPIManager()<APIManager, SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTAppRemotePlayerState>
+@interface SpotifyAPIManager()<APIManager, SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, SPTAppRemotePlayerState, SPTAppRemoteImageAPI, SPTAppRemoteTrack, SPTAppRemoteImageRepresentable>
 
 @property (nonatomic, strong) SPTConfiguration *configuration;
 @property (nonatomic, strong) SPTAppRemote *appRemote;
@@ -143,11 +143,23 @@ static NSString * const SpotifyRedirectURLString = @"partyplay://spotify-login-c
             }
         }];
     }
+    else{
+        [self.appRemote authorizeAndPlayURI:track.songURI];
+        [self.appRemote connect];
+    }
     
 }
 
-- (void)skipNext{
-    [self.appRemote.playerAPI skipToNext:nil];
+- (void)skipNext:(void(^)(bool success))completion{
+    [self.appRemote.playerAPI skipToNext:^(id  _Nullable result, NSError * _Nullable error) {
+        if(result){
+            completion(true);
+        }
+        else{
+            NSLog(@"Can't access current track name");
+        }
+    }];
+    //[self.appRemote.playerAPI skipToNext:nil];
 }
 
 - (void)skipPrevious{
@@ -183,6 +195,23 @@ static NSString * const SpotifyRedirectURLString = @"partyplay://spotify-login-c
         }
         else{
             NSLog(@"Can't access current track name");
+        }
+    }];
+}
+
+- (void)getAlbumArt:(void(^)(UIImage *AlbumArt))completion{
+    [self.appRemote.playerAPI getPlayerState:^(id  _Nullable result, NSError * _Nullable error) {
+        if(result){
+            CGSize size = CGSizeMake(375, 375);
+            [self.appRemote.imageAPI fetchImageForItem:[result track] withSize:size callback:^(id  _Nullable image, NSError * _Nullable error){
+                if(image){
+                    completion(image);
+                }
+            }];
+        }
+        else{
+            NSLog(@"Can't access current track name");
+            
         }
     }];
 }

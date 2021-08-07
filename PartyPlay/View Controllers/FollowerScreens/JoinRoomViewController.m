@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *roomNameField;
 @property (weak, nonatomic) IBOutlet UITextField *roomCodeField;
 @property (strong, nonatomic) Room *room;
+@property (weak, nonatomic) IBOutlet UIButton *joinRoomButton;
 
 @end
 
@@ -24,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.joinRoomButton.layer.cornerRadius = 12.0;
     // Do any additional setup after loading the view.
 }
 - (IBAction)didTapJoin:(id)sender {
@@ -48,6 +50,9 @@
     myDelegate.window.rootViewController = homeViewController;
 }
 
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:true];
+}
 
 #pragma mark - Navigation
 

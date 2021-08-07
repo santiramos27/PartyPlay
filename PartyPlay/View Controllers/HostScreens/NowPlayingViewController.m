@@ -25,24 +25,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.roomNameLabel.text = self.room.roomName;
-    self.hostNameLabel.text = [[PFUser currentUser] username];
+    [self setupViews];
+    
+    // Do any additional setup after loading the view.
+}
+
+- (void)setupViews{
+    self.roomNameLabel.text = [NSString stringWithFormat:@"Room Name: %@", self.room.roomName];
+    self.hostNameLabel.text = [NSString stringWithFormat:@"Host: %@", [[PFUser currentUser] username]];
     [[SpotifyAPIManager shared] getNowPlayingTrack:^(NSString * _Nonnull trackName) {
             self.songTitleLabel.text = trackName;
     }];
     [[SpotifyAPIManager shared] getNowPlayingArtist:^(NSString * _Nonnull artistName) {
             self.artistLabel.text = artistName;
     }];
+    [[SpotifyAPIManager shared] getAlbumArt:^(UIImage * _Nonnull albumArt) {
+            self.albumArtImage.image = albumArt;
+    }];
     
-    // Do any additional setup after loading the view.
 }
 - (IBAction)didTapPlayPause:(id)sender {
     self.playPauseButton.selected = !self.playPauseButton.selected;
     self.playPauseButton.selected ? [[SpotifyAPIManager shared] pausePlayback] : [[SpotifyAPIManager shared] startPlayback];
 }
+
 - (IBAction)didTapBackwards:(id)sender {
     [[SpotifyAPIManager shared] skipPrevious];
 }
+
 - (IBAction)didTapForwards:(id)sender {
     //enqueue next top song
     Track *nextSong = self.room.sharedQueue[0];
@@ -53,13 +63,19 @@
             [self.room saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Push success");
-                    [[SpotifyAPIManager shared] skipNext];
+                    self.room.sharedQueue = [Track JSONDeserialize:self.room.sharedQueue];
+                    [[SpotifyAPIManager shared] skipNext:^(bool success){
+                        if(success){
+                            [self setupViews];
+                        }
+                    }];
                 } else {
                     NSLog(@"Push failed");
                 }
               }];
         }
     }];
+    
 }
 
 /*

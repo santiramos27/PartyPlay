@@ -19,6 +19,7 @@
     NSDictionary *artist = artists[0];
     self.artistName = artist[@"name"];
     self.numVotes = [NSNumber numberWithInt:0];
+    self.added = [NSNumber numberWithInt:0];
     
     return self;
 }
@@ -35,7 +36,7 @@
 + (NSMutableArray *)JSONSerialize:(NSMutableArray *)queue{
     NSMutableArray *unpacked = [NSMutableArray array];
     for (Track *track in queue){
-        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songURI, @"songURI", track.songName, @"songName", track.artistName, @"artistName", track.numVotes, @"numVotes", track.addedBy, @"addedBy", nil];
+        NSDictionary *song = [[NSDictionary alloc] initWithObjectsAndKeys:track.songURI, @"songURI", track.songName, @"songName", track.artistName, @"artistName", track.numVotes, @"numVotes", track.addedBy, @"addedBy", track.added, @"added", nil];
         [unpacked addObject:song];
     }
     return unpacked;
@@ -50,6 +51,7 @@
         track.artistName = dict[@"artistName"];
         track.numVotes = dict[@"numVotes"];
         track.addedBy = dict[@"addedBy"];
+        track.added = dict[@"added"];
         [packed addObject:track];
     }
     return packed;
